@@ -2,4 +2,41 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="container">
+        <div class="row>
+            <div class="col-12">
+                <h1>Login</h1>
+            </div>
+            </div>
+
+            <form>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="txtUserName">UserName</label>
+                        <asp:TextBox class="form-control" ID="txtUserName"  runat="server"></asp:TextBox>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="txtPassword">Password</label>
+                        <asp:TextBox ID="txtPassword" class="form-control" type="password" runat="server"></asp:TextBox>
+                            </div>
+                    </div>
+        <div class="row">
+                        <div class="col-12">
+                            <label for="btnRegister">Dont have an account?</label>
+                            <asp:Button ID="btnRegister" class="btn btn-primary" runat="server" Text="Register" />
+                            
+                            </div>
+                    </div>
+        <div class="row">
+            <div class="col-12">
+                <asp:Button ID="btnLogin" class="btn btn-primary" runat="server" Text="Login" />
+            </div>
+            
+        </div>
+                </form>
+                </div>
+
 </asp:Content>
