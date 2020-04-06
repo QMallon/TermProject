@@ -13,5 +13,23 @@ namespace TermProject
         {
 
         }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUserName.Text;
+            string password = txtPassword.Text;
+            if(username != "" || password != "")
+            {
+                // Code to get
+                //getAccount( username, password);
+            }
+
+            
+        }
     }
 }
