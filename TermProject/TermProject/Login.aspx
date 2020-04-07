@@ -20,6 +20,10 @@
                                 <label for="txtPassword">Password</label>
                         <asp:TextBox ID="txtPassword" class="form-control" type="password" runat="server"></asp:TextBox>
                             </div>
+                            <div class="form-group">
+                                <label for="chkRemember">Remember me</label>
+                            <asp:CheckBox class="custom-checkbox" ID="chkRemember" runat="server" />
+                            </div>
                             <asp:Button ID="btnRegister" class="btn btn-danger" runat="server" Text="Register" OnClick="btnRegister_Click" />
                             <asp:Button ID="btnLogin" class="btn btn-primary" runat="server" Text="Login" OnClick="btnLogin_Click" />
                         </form>
