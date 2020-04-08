@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TermProject.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TermProject.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TermProject.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TermProject.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,12 +13,12 @@
                     <div class="card-body">
                         <form>
                             <div class="form-group">
-                                <label for="txtUserName">Username</label>
-                        <asp:TextBox class="form-control" ID="txtUserName"  runat="server"></asp:TextBox>
+                                <label for="txtLoginUserName">Username</label>
+                        <asp:TextBox class="form-control" ID="txtLoginUserName"  runat="server"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label for="txtPassword">Password</label>
-                        <asp:TextBox ID="txtPassword" class="form-control" type="password" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtLoginPassword" class="form-control" type="password" runat="server"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label for="chkRemember">Remember me</label>
@@ -33,41 +33,6 @@
         </div>
     </div>
 
-    <%--<div class="container">
-        <div class="row align-content-center">
-            <div class="col-12">
-                <h1>Login</h1>
-            </div>
-            </div>
-
-             <form class="form">
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="txtUserName">Username</label>
-                        <asp:TextBox class="form-control" ID="txtUserName"  runat="server"></asp:TextBox>
-                        </div>
-                        
-                    </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label for="txtPassword">Password</label>
-                        <asp:TextBox ID="txtPassword" class="form-control" type="password" runat="server"></asp:TextBox>
-                            </div>
-                    </div>
-        <div class="row">
-                        <div class="form-group">
-                            <%--<label for="btnRegister">Dont have an account?</label>--%>
-                        <%--    <asp:Button ID="btnRegister" class="btn btn-primary" runat="server" Text="Register" />
-                            
-                            </div>
-                    </div>--%>
-        <%--<div class="row">
-            <div class="col-12">
-                <asp:Button ID="btnLogin" class="btn btn-primary" runat="server" Text="Login" />
-            </div>
-            
-        </div>
-                </form>
-                </div>--%>
+    
 
 </asp:Content>

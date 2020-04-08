@@ -10,25 +10,25 @@
 namespace TermProject {
     
     
-    public partial class WebForm1 {
+    public partial class Login {
         
         /// <summary>
-        /// txtUserName control.
+        /// txtLoginUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserName;
+        protected global::System.Web.UI.WebControls.TextBox txtLoginUserName;
         
         /// <summary>
-        /// txtPassword control.
+        /// txtLoginPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtLoginPassword;
         
         /// <summary>
         /// chkRemember control.

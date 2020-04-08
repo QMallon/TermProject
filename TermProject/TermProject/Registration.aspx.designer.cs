@@ -10,7 +10,7 @@
 namespace TermProject {
     
     
-    public partial class WebForm1 {
+    public partial class Registration {
         
         /// <summary>
         /// Label1 control.

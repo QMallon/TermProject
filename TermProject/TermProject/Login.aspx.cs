@@ -10,7 +10,7 @@ using Utilities;
 
 namespace TermProject
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class Login : System.Web.UI.Page
     {
         DBConnect dBConnect = new DBConnect();
         protected void Page_Load(object sender, EventArgs e)
@@ -19,22 +19,22 @@ namespace TermProject
             {
                 HttpCookie cookie = Request.Cookies["LoginCookie"];
 
-                txtUserName.Text = cookie.Values["User"].ToString();
+                txtLoginUserName.Text = cookie.Values["User"].ToString();
 
-                txtPassword.Text = cookie.Values["pass"].ToString();
+                txtLoginPassword.Text = cookie.Values["pass"].ToString();
             }
             
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Registration.aspx");
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUserName.Text;
-            string password = txtPassword.Text;
+            string username = txtLoginUserName.Text;
+            string password = txtLoginPassword.Text;
             if(username != "" || password != "")
             {
                 
@@ -82,8 +82,8 @@ namespace TermProject
                     }
                     else
                     {
-                        txtUserName.Text = "";
-                        txtPassword.Text = "";
+                        txtLoginUserName.Text = "";
+                        txtLoginPassword.Text = "";
                     }
                     
                     
@@ -93,8 +93,8 @@ namespace TermProject
                 catch
                 {
                     //Label1.Text = "Login failed";
-                    txtUserName.Text = "";
-                    txtPassword.Text = "";
+                    txtLoginUserName.Text = "";
+                    txtLoginPassword.Text = "";
                 }
                 // Code to get
                 //getAccount( username, password);
