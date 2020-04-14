@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -70,6 +71,7 @@
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
     <Content Include="Registration.aspx" />
+    <Content Include="CreateProfile.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +96,13 @@
     <Compile Include="Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CreateProfile.aspx.cs">
+      <DependentUpon>CreateProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateProfile.aspx.designer.cs">
+      <DependentUpon>CreateProfile.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -106,8 +115,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{051B52D3-4DBF-47A0-B577-627D038EDE41}</Project>
+    <ProjectReference Include="..\..\..\..\..\source\repos\CIS3342_Solutions\Utilities\Utilities.csproj">
+      <Project>{45ed9e72-5a11-45b7-89f1-f0c984ff83cb}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
