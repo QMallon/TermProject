@@ -74,6 +74,7 @@
     <Content Include="CreateProfile.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TermProject.Master.cs">
       <DependentUpon>TermProject.Master</DependentUpon>

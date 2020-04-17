@@ -15,6 +15,10 @@ namespace DatingProfileAPI.Controllers
     [ApiController]
     public class ProfileController : ControllerBase
     {
+
+        DBConnect objDB = new DBConnect();
+        SqlCommand objCommand = new SqlCommand();
+
         // GET: api/Profile
         [HttpGet]
         public List<Profile> Get() // get all profiles 
@@ -86,12 +90,30 @@ public Profile Get(int id) // get the profile by user ID
         [HttpPost]
         public Boolean Post([FromBody] Profile profile) // insert new profile 
         {
+            
+            objDB = new DBConnect();
+            objCommand = new SqlCommand();
 
-            DBConnect objDb = new DBConnect();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_sp_addNewProfile";
+            
+            objCommand.Parameters.AddWithValue("@UserID", profile.UserID); // need a int value 
+            objCommand.Parameters.AddWithValue("@UserImage", "jk"); // userimage
+            objCommand.Parameters.AddWithValue("@FisrtName", profile.FirstName);
 
-            string strSQL = "INSERT Into TP_Profiles(FisrtName, LastName, StreetAddress, StreetAddressLn2, City, State, ZipCode)" + "Values('" + profile.FirstName + "', '" + profile.LastName + "', '" + profile.StreetAddress + "', '" + profile.StreetAddressLn2 + "', '" + profile.City + "', '" + profile.State + "', '" + profile.ZipCode + ")";
 
-            int result = objDb.DoUpdate(strSQL);
+            objCommand.Parameters.AddWithValue("@LastName", profile.LastName);
+
+            objCommand.Parameters.AddWithValue("@StreetAddress", profile.StreetAddress);
+            objCommand.Parameters.AddWithValue("@StreetAddressLn2", profile.StreetAddressLn2);
+
+            objCommand.Parameters.AddWithValue("@City", profile.City);
+            objCommand.Parameters.AddWithValue("@State", profile.State);
+
+            objCommand.Parameters.AddWithValue("@ZipCode", profile.ZipCode);
+            
+
+            int result = objDB.DoUpdateUsingCmdObj(objCommand);
 
             if (result > 0)
             {
