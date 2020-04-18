@@ -122,10 +122,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DatingProfileAPI\DatingProfileAPI.csproj">
-      <Project>{852ef371-94d9-49ad-b82b-a4ee05452fa0}</Project>
-      <Name>DatingProfileAPI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{051b52d3-4dbf-47a0-b577-627d038ede41}</Project>
       <Name>Utilities</Name>
