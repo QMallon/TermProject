@@ -8,8 +8,10 @@ using Utilities;
 using System.Drawing;
 using System.Data;
 using System.Data.SqlClient;
-
-using System.Device.Location;
+using System.IO;
+using System.Web.Script.Serialization; //Json serialization
+using System.IO; // Stream reader and Stream
+using System.Net; // Web Request 
 
 namespace TermProject
 {
@@ -33,7 +35,7 @@ namespace TermProject
         {
             strUsername = Session["Username"].ToString();
 
-            if (strUsername != ""){
+            if (strUsername != "") {
 
                 objDB = new DBConnect();
                 objCommand = new SqlCommand();
@@ -63,66 +65,118 @@ namespace TermProject
                     CreateNewProfile();
 
                 }
-
+                
             } //If user try to access create profile without a valid User
             else {
 
-               //display error message 
+                //display error message 
 
             }
-            
+
         }
-        
-        
+
+        protected void UploadFile(object sender, EventArgs e)
+        {
+            string folderPath = Server.MapPath("~/Files/");
+
+            //Check whether Directory (Folder) exists.
+            if (!Directory.Exists(folderPath))
+            {
+                //If Directory (Folder) does not exists Create it.
+                Directory.CreateDirectory(folderPath);
+            }
+
+            //Save the File to the Directory (Folder).
+            FileUpload1.SaveAs(folderPath + Path.GetFileName(FileUpload1.FileName));
+
+            //Display the Picture in Image control.
+            Image1.ImageUrl = "~/Files/" + Path.GetFileName(FileUpload1.FileName);
+        }
+
         private void CreateNewProfile() {
 
+           
+            Profile profile = new Profile();
 
-            objDB = new DBConnect();
-            objCommand = new SqlCommand();
+            profile.UserID = int.Parse(strUserID);
+            profile.FirstName = txtFirstName.Text;
+            profile.LastName = txtLastName.Text;
 
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_sp_addNewProfile";
+            //----------- address ------------//
 
+            profile.StreetAddress = txtStreetAddress.Text;
+            profile.StreetAddressLn2 = txtStreetAddressLn2.Text;
+            profile.City = txtCity.Text;
+            profile.State = ddlState.SelectedValue;
+            profile.ZipCode = int.Parse(txtZipcode.Text);
 
-            objCommand.Parameters.AddWithValue("@UserID", strUserID); // need a int value 
-            objCommand.Parameters.AddWithValue("@UserImage", "jk"); // userimage
-            objCommand.Parameters.AddWithValue("@FisrtName", txtFirstName.Text);
-
-
-            objCommand.Parameters.AddWithValue("@LastName", txtLastName.Text);
-            objCommand.Parameters.AddWithValue("@StreetAddress", txtStreetAddress.Text);
-
-            objCommand.Parameters.AddWithValue("@City", txtCity.Text);
-            objCommand.Parameters.AddWithValue("@State", txtState.Text);
-
-            objCommand.Parameters.AddWithValue("@ZipCode", txtZipcode.Text);
+            //---------- Ocupation ------------
+        
 
 
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            String JsonTeam = js.Serialize(profile);
 
-            val = objDB.DoUpdateUsingCmdObj(objCommand);
-
-            if (val < 0)
-            {
-                lblStatus.ForeColor = Color.Red;
-                lblStatus.Text = "[Server:Error new profile was not created]" + strUserID;
-
-            }
-            else
+            try
             {
 
-                lblStatus.ForeColor = Color.Green;
-                lblStatus.Text = "Success: New user was created";
+                WebRequest request = WebRequest.Create(""); //webrequest for the api localhost
+                //WebRequest request = WebRequest.Create(""); //webrequest for the api published version
+
+                request.Method = "Post";
+                request.ContentLength = JsonTeam.Length;
+                request.ContentType = "application/json";
+
+                StreamWriter writer = new StreamWriter(request.GetRequestStream());
+                writer.Write(JsonTeam);
+                writer.Flush();
+                writer.Close();
+
+                WebResponse response = request.GetResponse();
+
+                Stream theDataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(theDataStream);
+
+                String data = reader.ReadToEnd();
+
+                response.Close();
+
+                if (data == "true")
+                {
+
+                    lblStatus.ForeColor = Color.Green;
+                    lblStatus.Text = "Success: New user was created";
+
+                }
+                else
+                {
+                    lblStatus.ForeColor = Color.Red;
+                    lblStatus.Text = "[Server:Error new profile was not created]" + strUserID;
+                }
+
 
             }
 
+            catch(Exception ex){
 
+                lblStatus.Text = "Error " + ex.Message;
 
+            }
 
+            CleanTextFields();
+        }
 
+        private void CleanTextFields() {
 
+            txtCity.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            ddlState.SelectedValue = "";
+            txtStreetAddress.Text = "";
+            txtStreetAddressLn2.Text = "";
+            txtZipcode.Text = "";
+            
+        }
 
-
-        } //method gather all the required information for the new profile and save into the database
-
-    }
+    } 
 }

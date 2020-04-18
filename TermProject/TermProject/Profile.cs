@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace DatingProfileAPI
+namespace TermProject
 {
     public class Profile
     {
-
-
+        
         public int ProfileID { get; set; }
         public int UserID { get; set; }
         public String UserImage { get; set; }
@@ -40,7 +39,10 @@ namespace DatingProfileAPI
         public bool Kids { get; set; }
         public bool WantKids { get; set; }
         public String Religion { get; set; }
-        
+
+
+
+
         public Profile() { }
 
         public Profile(String name)
@@ -76,8 +78,8 @@ namespace DatingProfileAPI
             this.Kids = kids;
             this.WantKids = wantkids;
             this.Religion = religion;
-
+            
         }
-        
+
     }
 }
