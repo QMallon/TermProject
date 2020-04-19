@@ -10,10 +10,9 @@ namespace Utilities
 {
     public class DBConnect
     {
-        //FOR AT HOME STUFF 
-        //String SqlConnectString = "server=cis-mssql1.temple.edu;Database=SP20_3342_tug47221;User id=tug47221;Password=Aich9iba";
-        //String SqlConnectString = "server=127.0.0.1,5555;Database=SP20_3342_tug47221;User id=tug47221;Password=Aich9iba";
         String SqlConnectString = "server=127.0.0.1,5555; Database=sp20_3342_tug92165;User id=tug92165;Password=Aew4aif5";
+        //String SqlConnectString = "server=cis-mssql1.temple.edu; Database=sp20_3342_tug92165;User id=tug92165;Password=Aew4aif5";
+
         SqlConnection myConnectionSql;
         SqlCommand objCmd;
         SqlDataReader objDataReader;
@@ -29,7 +28,7 @@ namespace Utilities
         // Returns: a DataSet containing the records found by the query. 
         // Note: The DataSet is also stored as a class variable for use in the GetField method
         public DataSet GetDataSet(String SqlSelect)
-        {
+        {         
             SqlDataAdapter myDataAdapter = new SqlDataAdapter(SqlSelect, myConnectionSql);
             DataSet myDataSet = new DataSet();
             myDataAdapter.Fill(myDataSet);
@@ -128,7 +127,7 @@ namespace Utilities
             myDataAdapter.Fill(myDataSet);
             ds = myDataSet;
 
-            return myDataSet;
+            return myDataSet;          
         }
 
         // This method is used to retrieve a row from a DataSet.

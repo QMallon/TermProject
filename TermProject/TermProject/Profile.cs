@@ -10,7 +10,7 @@ namespace TermProject
         
         public int ProfileID { get; set; }
         public int UserID { get; set; }
-        public String UserImage { get; set; }
+        public Byte[] UserImage { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
 
@@ -23,7 +23,7 @@ namespace TermProject
         public int ZipCode { get; set; }
 
         //------- Physical -----------
-
+       
         public int Age { get; set; }
         public double Height { get; set; }
         public double Weight { get; set; }
@@ -36,8 +36,8 @@ namespace TermProject
         public String Favorites { get; set; }
         public String Goals { get; set; }
         public String Commitment { get; set; }
-        public bool Kids { get; set; }
-        public bool WantKids { get; set; }
+        public String Kids { get; set; }
+        public String WantKids { get; set; }
         public String Religion { get; set; }
 
 
@@ -52,10 +52,11 @@ namespace TermProject
 
         }
 
-        public Profile(String firstname, String lastname, String streetaddress, String streetaddressln2, String city, String state, int zipcode, int age, double height, double weight, string ocupation, string interest, string likesdislikes, string favorites, string goals, string commitment, bool kids, bool wantkids, string religion)
+        public Profile(Byte[] userimage, String firstname, String lastname, String streetaddress, String streetaddressln2, String city, String state, int zipcode, int age, double height, double weight, string ocupation, string interest, string likesdislikes, string favorites, string goals, string commitment, string kids, string wantkids, string religion)
 
         {
 
+            this.UserImage = userimage;
             this.FirstName = firstname;
             this.LastName = lastname;
 
