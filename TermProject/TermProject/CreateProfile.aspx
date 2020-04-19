@@ -8,7 +8,7 @@
 
 
         <!-- Material form register -->
-<div class="card">
+<div id="divMain" runat="server" class="card">
 
     <h5 class="card-header info-color white-text text-center py-4">
         <strong> Built your profile </strong>
@@ -20,12 +20,17 @@
         <!-- Form -->
         <form class="text-center" style="color: #757575;" action="#!">
 
-
-<asp:Image ID="Image1" runat="server" Height = "100" Width = "100" style="border-radius: 50%;display: block;margin-left: auto;margin-right: auto; " />
 <br>
-<asp:FileUpload ID="FileUpload1" runat="server" style="display: block;margin-left: auto;margin-right: auto;"/>
 
-<asp:Button ID="btnUpload" Text="Upload" runat="server" OnClick="UploadFile" style="display: block;margin-left: auto;margin-right: auto;" />
+<asp:Image ID="Image1" runat="server" Height = "100" Width = "100" style="border-radius: 50%;display: block;margin-left: auto;margin-right: auto; background-color:lightgrey;" BorderColor="Red" BorderStyle="Solid" />
+
+<br>
+
+<asp:FileUpload ID="FileUpload1" runat="server" style="display: block;margin-left: auto;margin-right: auto;" class="btn btn-primary"/>
+
+<br>
+
+<asp:Button ID="btnUpload" Text="SaveImage" runat="server" OnClick="UploadFile" style="display: block;margin-left: auto;margin-right: auto;" class="btn btn-success" />
             
             <hr>
 
@@ -212,7 +217,28 @@
 
             <!-------Kids------>
 
+    <asp:Label ID="lblKids" runat="server" Text="Have kids:" AssociatedControlID="rbKids"></asp:Label>
+
+  <asp:RadioButtonList ID="rbKids" runat="server" RepeatDirection="Horizontal">
+    
+    <asp:ListItem Text="Yes" Value="Yes" />
+    <asp:ListItem Text="No" Value="No" />
+
+  </asp:RadioButtonList>
+
+
             <!-------WantKids----->
+
+  <asp:Label ID="lblWantKids" runat="server" Text="Want kids:" AssociatedControlID="rbWantKids"></asp:Label>
+
+  <asp:RadioButtonList ID="rbWantKids" runat="server" RepeatDirection="Horizontal">
+    
+    <asp:ListItem Text="Yes" Value="Yes" />
+    <asp:ListItem Text="No" Value="No" />
+    <asp:ListItem Text="Unsure" Value="Unsure" />
+  
+  </asp:RadioButtonList>
+
 
             <!-------Religion------->
 <asp:Label ID="lblReligion" runat="server" Text="Religion:" AssociatedControlID="ddlReligion"></asp:Label>
@@ -244,7 +270,8 @@
 
        </div>
         </div>
-</div>
+    </div>
+    </div>
 <!-- Material form register -->
 
 </asp:Content>

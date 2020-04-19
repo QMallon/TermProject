@@ -33,17 +33,31 @@ namespace DatingProfileAPI.Controllers
 
 
                 profile = new Profile();
-
+                
                 profile.ProfileID = int.Parse(record["ProfileId"].ToString());
                 profile.UserID = int.Parse(record["UserID"].ToString());
-                profile.UserImage = record["UserImage"].ToString();
-                profile.FirstName = record["FisrtName"].ToString();
+                //profile.UserImage 
+                profile.FirstName = record["FistName"].ToString();
                 profile.LastName = record["LastName"].ToString();
+
                 profile.StreetAddress = record["StreetAddress"].ToString();
                 profile.StreetAddressLn2 = record["StreetAddressLn2"].ToString();
                 profile.City = record["City"].ToString();
                 profile.State = record["State"].ToString();
                 profile.ZipCode = int.Parse(record["Zipcode"].ToString());
+
+                profile.Age = int.Parse(record["Age"].ToString());
+                profile.Height = int.Parse(record["Height"].ToString());
+                profile.Weight = double.Parse(record["Weight"].ToString());
+
+                profile.Ocupation = record["Ocupation"].ToString();
+                profile.Interest = record["Interest"].ToString();
+                profile.LikesDislikes = record["LikesDislikes"].ToString();
+                profile.Favorites = record["Favorites"].ToString();
+                profile.Goals = record["Goals"].ToString();
+                profile.Kids = record["Kids"].ToString();
+                profile.WantKids = record["WantKids"].ToString();
+                profile.Religion = record["Religion"].ToString();
 
                 profiles.Add(profile);
 
@@ -70,13 +84,30 @@ public Profile Get(int id) // get the profile by user ID
                 DataRow record = ds.Tables[0].Rows[0];
 
                 profile.ProfileID = int.Parse(record["ProfileId"].ToString());
+                profile.UserID = int.Parse(record["UserID"].ToString());
+                //profile.UserImage 
                 profile.FirstName = record["FistName"].ToString();
                 profile.LastName = record["LastName"].ToString();
+
                 profile.StreetAddress = record["StreetAddress"].ToString();
                 profile.StreetAddressLn2 = record["StreetAddressLn2"].ToString();
                 profile.City = record["City"].ToString();
                 profile.State = record["State"].ToString();
                 profile.ZipCode = int.Parse(record["Zipcode"].ToString());
+
+                profile.Age = int.Parse(record["Age"].ToString());
+                profile.Height = int.Parse(record["Height"].ToString());
+                profile.Weight = double.Parse(record["Weight"].ToString());
+
+                profile.Ocupation = record["Ocupation"].ToString();
+                profile.Interest = record["Interest"].ToString();
+                profile.LikesDislikes = record["LikesDislikes"].ToString();
+                profile.Favorites = record["Favorites"].ToString();
+                profile.Goals = record["Goals"].ToString();
+                profile.Kids = record["Kids"].ToString();
+                profile.WantKids = record["WantKids"].ToString();
+                profile.Religion = record["Religion"].ToString();
+
 
 
             }
@@ -88,7 +119,8 @@ public Profile Get(int id) // get the profile by user ID
 
         // POST: api/Profile
         [HttpPost]
-        public Boolean Post([FromBody] Profile profile) // insert new profile 
+
+ public Boolean Post([FromBody] Profile profile) // insert new profile 
         {
             
             objDB = new DBConnect();
@@ -100,18 +132,26 @@ public Profile Get(int id) // get the profile by user ID
             objCommand.Parameters.AddWithValue("@UserID", profile.UserID); // need a int value 
             objCommand.Parameters.AddWithValue("@UserImage", "jk"); // userimage
             objCommand.Parameters.AddWithValue("@FisrtName", profile.FirstName);
-
-
             objCommand.Parameters.AddWithValue("@LastName", profile.LastName);
 
             objCommand.Parameters.AddWithValue("@StreetAddress", profile.StreetAddress);
             objCommand.Parameters.AddWithValue("@StreetAddressLn2", profile.StreetAddressLn2);
-
             objCommand.Parameters.AddWithValue("@City", profile.City);
             objCommand.Parameters.AddWithValue("@State", profile.State);
-
             objCommand.Parameters.AddWithValue("@ZipCode", profile.ZipCode);
             
+            objCommand.Parameters.AddWithValue("@Age", profile.Age);
+            objCommand.Parameters.AddWithValue("@Height", profile.Height);
+            objCommand.Parameters.AddWithValue("@Weight", profile.Weight);
+            
+            objCommand.Parameters.AddWithValue("@Ocupation", profile.Ocupation);
+            objCommand.Parameters.AddWithValue("@Interest", profile.Interest);
+            objCommand.Parameters.AddWithValue("@LikesDislikes", profile.LikesDislikes);
+            objCommand.Parameters.AddWithValue("@Favorites", profile.Favorites);
+            objCommand.Parameters.AddWithValue("@Goals", profile.Goals);
+            objCommand.Parameters.AddWithValue("@Kids", profile.Kids);
+            objCommand.Parameters.AddWithValue("@WantKids", profile.WantKids);
+            objCommand.Parameters.AddWithValue("@Religion", profile.Religion);
 
             int result = objDB.DoUpdateUsingCmdObj(objCommand);
 
