@@ -37,8 +37,8 @@ namespace DatingProfileAPI
         public String Favorites { get; set; }
         public String Goals { get; set; }
         public String Commitment { get; set; }
-        public bool Kids { get; set; }
-        public bool WantKids { get; set; }
+        public String Kids { get; set; }
+        public String WantKids { get; set; }
         public String Religion { get; set; }
         
         public Profile() { }
@@ -50,7 +50,7 @@ namespace DatingProfileAPI
 
         }
 
-        public Profile(String firstname, String lastname, String streetaddress, String streetaddressln2, String city, String state, int zipcode, int age, double height, double weight, string ocupation, string interest, string likesdislikes, string favorites, string goals, string commitment, bool kids, bool wantkids, string religion)
+        public Profile(String firstname, String lastname, String streetaddress, String streetaddressln2, String city, String state, int zipcode, int age, double height, double weight, string ocupation, string interest, string likesdislikes, string favorites, string goals, string commitment, string kids, string wantkids, string religion)
 
         {
 
