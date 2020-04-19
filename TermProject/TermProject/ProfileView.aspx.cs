@@ -11,11 +11,18 @@ namespace TermProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            strUsername = Session["Username"].ToString();
-            if(strUsername == "")
+            string Username = Session["Username"].ToString();
+            if(Username == "")
             {
                 viewProfilenonUser();
             }
+            
+        }
+
+        public void viewProfilenonUser()
+        {
+
         }
     }
+    
 }
