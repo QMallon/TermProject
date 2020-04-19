@@ -116,7 +116,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\source\repos\CIS3342_Solutions\Utilities\Utilities.csproj">
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{45ed9e72-5a11-45b7-89f1-f0c984ff83cb}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
