@@ -13,6 +13,15 @@ namespace TermProject {
     public partial class WebForm4 {
         
         /// <summary>
+        /// lblName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblName;
+        
+        /// <summary>
         /// imgProfilePicture control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPersonalInfo;
+        
+        /// <summary>
+        /// lblValues control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValues;
         
         /// <summary>
         /// lblInterests control.
@@ -49,15 +67,6 @@ namespace TermProject {
         protected global::System.Web.UI.WebControls.Label lblLikes;
         
         /// <summary>
-        /// lblDislikes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDislikes;
-        
-        /// <summary>
         /// lblFavorites control.
         /// </summary>
         /// <remarks>
@@ -65,5 +74,32 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFavorites;
+        
+        /// <summary>
+        /// btnLike control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLike;
+        
+        /// <summary>
+        /// btnPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPass;
+        
+        /// <summary>
+        /// btnMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMessage;
     }
 }

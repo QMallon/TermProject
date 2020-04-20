@@ -184,6 +184,7 @@ namespace TermProject
             {
 
                 WebRequest request = WebRequest.Create(""); //webrequest for the api localhost
+                
                 //WebRequest request = WebRequest.Create(""); //webrequest for the api published version
 
                 request.Method = "Post";

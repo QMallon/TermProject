@@ -18,7 +18,7 @@ namespace TermProject
         DBConnect objDB = new DBConnect();
         SqlCommand objCommand = new SqlCommand();
         int intSession = 0;
-        //Validation validate = new Validation();
+        Validation validate = new Validation();
         
 
         protected void Page_Load(object sender, EventArgs e)

@@ -86,7 +86,7 @@ public Profile Get(int id) // get the profile by user ID
                 profile.ProfileID = int.Parse(record["ProfileId"].ToString());
                 profile.UserID = int.Parse(record["UserID"].ToString());
                 //profile.UserImage 
-                profile.FirstName = record["FistName"].ToString();
+                profile.FirstName = record["FisrtName"].ToString();
                 profile.LastName = record["LastName"].ToString();
 
                 profile.StreetAddress = record["StreetAddress"].ToString();
