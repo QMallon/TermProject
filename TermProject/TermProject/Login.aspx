@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="row>
+        <div class="row">
             <div class="col-12">
                 <h1>Login</h1>
             </div>
@@ -23,16 +23,21 @@
                         <asp:TextBox ID="txtPassword" class="form-control" type="password" runat="server"></asp:TextBox>
                             </div>
                     </div>
+                <div class="row">
+                    <div class="col-4">
+                        Remember Me? <asp:CheckBox ID="chkRemember" runat="server" />
+                    </div>
+                </div>
         <div class="row">
                         <div class="col-12">
                             <label for="btnRegister">Dont have an account?</label>
-                            <asp:Button ID="btnRegister" class="btn btn-primary" runat="server" Text="Register" />
+                            <asp:Button ID="btnRegister" class="btn btn-primary" runat="server" Text="Register" OnClick="btnRegister_Click" />
                             
                             </div>
                     </div>
         <div class="row">
             <div class="col-12">
-                <asp:Button ID="btnLogin" class="btn btn-primary" runat="server" Text="Login" />
+                <asp:Button ID="btnLogin" class="btn btn-primary" runat="server" Text="Login" OnClick="btnLogin_Click" />
             </div>
             
         </div>
