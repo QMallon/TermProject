@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
@@ -15,10 +16,11 @@ namespace TermProject
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
+        DBConnect objDB = new DBConnect();
         protected void Page_Load(object sender, EventArgs e)
         {
             string Username = Session["Username"].ToString();
-            DBConnect objDB = new DBConnect();
+           
             SqlCommand objCommand = new SqlCommand();
             objDB = new DBConnect();
             objCommand = new SqlCommand();
@@ -29,7 +31,7 @@ namespace TermProject
             objCommand.Parameters.AddWithValue("@Username", Username);
             DataSet UserID = objDB.GetDataSetUsingCmdObj(objCommand);
             int ID = Convert.ToInt32(UserID.Tables[0].Rows[0][0].ToString());
-           
+            Session["CurrentUserID"] = ID;
             viewProfilenonUser(ID);
             
             
@@ -80,13 +82,97 @@ namespace TermProject
         protected void btnLike_Click(object sender, EventArgs e)
         {
             //Add current profile to like
-            Session["CurrentUserID"].ToString();
+            SqlCommand objCommand = new SqlCommand();
+            //objCommand  = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_getLikes";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+
+            objDB.GetDataSetUsingCmdObj(objCommand);
+
+
+
+            Byte[] byteArray = (Byte[])objDB.GetField("Likes", 0);
+
+
+
+            BinaryFormatter deSerializer = new BinaryFormatter();
+
+            MemoryStream memStream = new MemoryStream(byteArray);
+
+
+
+            List<int> likeList = (List<int>)deSerializer.Deserialize(memStream);
+
+            likeList.Add(Convert.ToInt32(Session["CurrentUserID"]));
+
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            MemoryStream stream = new MemoryStream();
+
+            Byte[] Store;
+
+            serializer.Serialize(stream, likeList);
+
+            Store = memStream.ToArray();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_StoreLikes";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+            objCommand.Parameters.AddWithValue("@Likes", Store);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+
 
         }
 
         protected void btnPass_Click(object sender, EventArgs e)
         {
             //Add current profile to dislike
+            SqlCommand objCommand = new SqlCommand();
+            //objCommand  = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetPass";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+
+            objDB.GetDataSetUsingCmdObj(objCommand);
+
+
+
+            Byte[] byteArray = (Byte[])objDB.GetField("Passes", 0);
+
+
+
+            BinaryFormatter deSerializer = new BinaryFormatter();
+
+            MemoryStream memStream = new MemoryStream(byteArray);
+
+
+
+            List<int> passList = (List<int>)deSerializer.Deserialize(memStream);
+
+            passList.Add(Convert.ToInt32(Session["CurrentUserID"]));
+
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            MemoryStream stream = new MemoryStream();
+
+            Byte[] Store;
+
+            serializer.Serialize(stream, passList);
+
+            Store = memStream.ToArray();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_StorePass";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+            objCommand.Parameters.AddWithValue("@Pass", Store);
+            objDB.DoUpdateUsingCmdObj(objCommand);
         }
     }
     
