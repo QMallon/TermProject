@@ -71,12 +71,8 @@
     <Content Include="Registration.aspx" />
     <Content Include="CreateProfile.aspx" />
     <Content Include="ProfileView.aspx" />
-
-    <Content Include="SearchPage.aspx" />
-
     <Content Include="DateRequest.aspx" />
     <Content Include="Like_Pass.aspx" />
-
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Profile.cs" />
@@ -116,14 +112,6 @@
     <Compile Include="ProfileView.aspx.designer.cs">
       <DependentUpon>ProfileView.aspx</DependentUpon>
     </Compile>
-
-    <Compile Include="SearchPage.aspx.cs">
-      <DependentUpon>SearchPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SearchPage.aspx.designer.cs">
-      <DependentUpon>SearchPage.aspx</DependentUpon>
-
     <Compile Include="DateRequest.aspx.cs">
       <DependentUpon>DateRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,7 +125,6 @@
     </Compile>
     <Compile Include="Like_Pass.aspx.designer.cs">
       <DependentUpon>Like_Pass.aspx</DependentUpon>
-
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -152,14 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
-
       <Project>{051b52d3-4dbf-47a0-b577-627d038ede41}</Project>
-
       <Name>Utilities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Img\Profiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
