@@ -104,8 +104,9 @@ namespace Utilities
 
             } // validate that the string is a decimal
 
-        }
-
 
     }
+
+
+}
 

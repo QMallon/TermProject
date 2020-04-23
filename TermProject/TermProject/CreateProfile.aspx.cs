@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+
 using System.Web.Script.Serialization; //Json serialization
 using System.IO; // Stream reader and Stream
 using System.Net; // Web Request 
@@ -21,10 +22,11 @@ namespace TermProject
         SqlCommand objCommand = new SqlCommand();
         Profile profile = new Profile();
         string strUsername = "";
+        string strUserImage = "";
         
 
         string strUserID = "";
-        int val = 0;
+  
 
         Validation validate = new Validation();
 
@@ -32,6 +34,7 @@ namespace TermProject
         protected void Page_Load(object sender, EventArgs e)
         {
             strUsername = Session["Username"].ToString();
+           
 
             if (strUsername != "")
             {
@@ -68,7 +71,7 @@ namespace TermProject
                 ds = objDB.GetDataSetUsingCmdObj(objCommand);
 
                 strUserID = Convert.ToString(ds.Tables[0].Rows[0]["UserID"]); // get the userID using the username
-
+                
                 if (strUserID == "")
                 {
                     lblStatus.ForeColor = Color.Red;
@@ -85,7 +88,7 @@ namespace TermProject
             } //If user try to access create profile without a valid User
             else {
 
-                //display error message 
+                lblStatus.Text = "You need to create account first first be able to create a profile";//display error message 
 
             }
 
@@ -95,7 +98,7 @@ namespace TermProject
         {
             int imgSize = 0;
             string fileExt,imgName,imgType;
-            string folderPath = Server.MapPath("~/Files/");
+            string folderPath = Server.MapPath("~/Img/Profiles");
 
 
             //Check whether Directory (Folder) exists.
@@ -112,6 +115,7 @@ namespace TermProject
             if (FileUpload1.HasFile) { 
 
                 imgSize = FileUpload1.PostedFile.ContentLength;
+
                 byte[] imgData = new byte[imgSize];
 
                 FileUpload1.PostedFile.InputStream.Read(imgData, 0, imgSize);
@@ -124,8 +128,7 @@ namespace TermProject
                 if (fileExt == ".jpg" || fileExt == ".jpeg" || fileExt == ".bmp" || fileExt == ".gif")
 
                 {
-
-                    imgData = profile.UserImage;
+                    
                     Image1.BorderColor = Color.Green;
 
                 }
@@ -141,16 +144,20 @@ namespace TermProject
                 
             } 
             
-            Image1.ImageUrl = "~/Files/" + Path.GetFileName(FileUpload1.FileName);
+            Image1.ImageUrl = "~/Img/Profiles/" + Path.GetFileName(FileUpload1.FileName);
+
+            strUserImage = Image1.ImageUrl;
 
         }
 
         private void CreateNewProfile() {
             
+            profile = new Profile();
+
             profile.UserID = int.Parse(strUserID);
             profile.FirstName = txtFirstName.Text;
             profile.LastName = txtLastName.Text;
-
+            profile.UserImage = strUserImage;
             //----------- address ------------//
 
             profile.StreetAddress = txtStreetAddress.Text;
@@ -161,6 +168,7 @@ namespace TermProject
 
             //--------- Physical --------------//
 
+            /*
             profile.Age = int.Parse(txtAge.Text);
             profile.Height = double.Parse(txtWeight.Text);
             profile.Weight = double.Parse(txtWeight.Text);
@@ -176,18 +184,19 @@ namespace TermProject
             profile.Kids = rbKids.SelectedValue;
             profile.WantKids = rbWantKids.SelectedValue;
             profile.Religion = ddlReligion.SelectedValue;
-            
+            */
+
             JavaScriptSerializer js = new JavaScriptSerializer();
             String JsonTeam = js.Serialize(profile);
 
             try
             {
 
-                WebRequest request = WebRequest.Create(""); //webrequest for the api localhost
-                
+                WebRequest request = WebRequest.Create("https://localhost:44345/api/profile/"); //webrequest for the api localhost
+
                 //WebRequest request = WebRequest.Create(""); //webrequest for the api published version
 
-                request.Method = "Post";
+                request.Method = "POST";
                 request.ContentLength = JsonTeam.Length;
                 request.ContentType = "application/json";
 
@@ -197,11 +206,11 @@ namespace TermProject
                 writer.Close();
 
                 WebResponse response = request.GetResponse();
-
                 Stream theDataStream = response.GetResponseStream();
                 StreamReader reader = new StreamReader(theDataStream);
 
                 String data = reader.ReadToEnd();
+                reader.Close();
 
                 response.Close();
 
@@ -214,10 +223,11 @@ namespace TermProject
                 }
                 else
                 {
+
                     lblStatus.ForeColor = Color.Red;
                     lblStatus.Text = "[Server:Error new profile was not created]" + strUserID;
-                }
 
+                }
 
             }
 
@@ -228,6 +238,7 @@ namespace TermProject
             }
 
             CleanTextFields();
+
         }
 
         private void CleanTextFields() {
@@ -241,6 +252,97 @@ namespace TermProject
             txtZipcode.Text = "";
             
         }
+
+        protected void btnTest_Click(object sender, EventArgs e)
+        {
+
+            objDB = new DBConnect();
+            objCommand = new SqlCommand();
+
+            strUsername = Session["Username"].ToString();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetUserIDByUSername";
+
+            objCommand.Parameters.AddWithValue("@Username", strUsername);
+
+            DataSet ds = new DataSet();
+
+            ds = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            strUserID = Convert.ToString(ds.Tables[0].Rows[0]["UserID"]); // get the userID using the username
+
+            profile = new Profile();
+
+            profile.UserID = int.Parse(strUserID);
+            profile.FirstName = txtFirstName.Text;
+            profile.LastName = txtLastName.Text;
+            profile.UserImage = strUserImage;
+            //----------- address ------------//
+
+            profile.StreetAddress = txtStreetAddress.Text;
+            profile.StreetAddressLn2 = txtStreetAddressLn2.Text;
+            profile.City = txtCity.Text;
+            profile.State = ddlState.SelectedValue;
+            profile.ZipCode = int.Parse(txtZipcode.Text);
+
+            objDB = new DBConnect();
+            objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_sp_addNewProfile";
+
+      
+            objCommand.Parameters.AddWithValue("@UserID", profile.UserID); // need a int value 
+
+
+            objCommand.Parameters.AddWithValue("@UserImage", profile.UserImage);
+            
+            objCommand.Parameters.AddWithValue("@FirstName", profile.FirstName);
+            objCommand.Parameters.AddWithValue("@LastName", profile.LastName);
+
+            objCommand.Parameters.AddWithValue("@StreetAddress", profile.StreetAddress);
+            objCommand.Parameters.AddWithValue("@StreetAddressLn2", profile.StreetAddressLn2);
+            objCommand.Parameters.AddWithValue("@City", profile.City);
+            objCommand.Parameters.AddWithValue("@State", profile.State);
+            objCommand.Parameters.AddWithValue("@ZipCode", profile.ZipCode);
+            /*
+            objCommand.Parameters.AddWithValue("@Age", profile.Age);
+            objCommand.Parameters.AddWithValue("@Height", profile.Height);
+            objCommand.Parameters.AddWithValue("@Weight", profile.Weight);
+
+            objCommand.Parameters.AddWithValue("@Ocupation", profile.Ocupation);
+            objCommand.Parameters.AddWithValue("@Interest", profile.Interest);
+            objCommand.Parameters.AddWithValue("@LikesDislikes", profile.LikesDislikes);
+            objCommand.Parameters.AddWithValue("@Favorites", profile.Favorites);
+            objCommand.Parameters.AddWithValue("@Goals", profile.Goals);
+            objCommand.Parameters.AddWithValue("@Kids", profile.Kids);
+            objCommand.Parameters.AddWithValue("@WantKids", profile.WantKids);
+            objCommand.Parameters.AddWithValue("@Religion", profile.Religion);
+           */
+            int result = objDB.DoUpdateUsingCmdObj(objCommand);
+
+            if (result > 0)
+            {
+
+                lblStatus.Text = "success" + " / " + strUserImage + " / " + profile.UserImage ;
+                
+
+            } else if (result < 0) {
+
+                lblStatus.Text = "Fail";
+
+            }
+            else {
+
+                lblStatus.Text = "Error";
+
+            }
+
+
+
+        }
         
-    } 
+    }
+     
 }
