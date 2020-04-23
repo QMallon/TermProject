@@ -262,7 +262,7 @@
             
             <br>
             <asp:Button ID="btnSudmit" runat="server" Text="Submit" OnClick="btnSudmit_Click" class="btn btn-success" /> <!--Submit button--->
-       
+            <asp:Button ID="btnTest" runat="server" Text="Test" OnClick="btnTest_Click" />
             <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
         </div>
         </form>

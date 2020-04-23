@@ -50,10 +50,11 @@ namespace DatingProfileAPI
 
         }
 
-        public Profile(String firstname, String lastname, String streetaddress, String streetaddressln2, String city, String state, int zipcode, int age, double height, double weight, string ocupation, string interest, string likesdislikes, string favorites, string goals, string commitment, string kids, string wantkids, string religion)
+        public Profile(int userid, String userimage,  String firstname, String lastname, String streetaddress, String streetaddressln2, String city, String state, int zipcode, int age, double height, double weight, string ocupation, string interest, string likesdislikes, string favorites, string goals, string commitment, string kids, string wantkids, string religion)
 
         {
-
+            this.UserID = userid;
+            this.UserImage = userimage;
             this.FirstName = firstname;
             this.LastName = lastname;
 

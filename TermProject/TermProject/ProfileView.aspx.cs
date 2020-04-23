@@ -18,6 +18,13 @@ namespace TermProject
         protected void Page_Load(object sender, EventArgs e)
         {
             string Username = Session["Username"].ToString();
+
+
+            if(Username == "")
+            {
+                viewProfilenonUser();
+            }
+
             DBConnect objDB = new DBConnect();
             SqlCommand objCommand = new SqlCommand();
             objDB = new DBConnect();
@@ -57,6 +64,7 @@ namespace TermProject
             JavaScriptSerializer js = new JavaScriptSerializer();
 
             Profile currentProfile = js.Deserialize<Profile>(data);
+
             
             string Name = currentProfile.FirstName + ", " + currentProfile.LastName;
             string personalInfo = "Age: " + currentProfile.Age + "\nWeight:  " +
