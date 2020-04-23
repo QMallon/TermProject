@@ -171,8 +171,6 @@ body {
     
     </style>
         
-    
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -213,16 +211,20 @@ body {
               </nav>
             </div>
           </div>
-
+            
           <div class="inner cover">
               <form id="form1" runat="server">
         <div>
+            </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 
             </asp:ContentPlaceHolder>
-        </div>
+     
+    
     </form>
-          </div>
+                 </div>
+      </div>
+              </div>
 
           <div class="mastfoot">
             <div class="inner">
@@ -230,11 +232,9 @@ body {
             </div>
           </div>
 
-        </div>
-
-      </div>
-
-    </div>
+        
+             </div>
+     
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -243,8 +243,12 @@ body {
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
+  
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+
 
 </body>
 </html>

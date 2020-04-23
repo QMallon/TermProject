@@ -10,7 +10,7 @@ namespace TermProject
         
         public int ProfileID { get; set; }
         public int UserID { get; set; }
-        public Byte[] UserImage { get; set; }
+        public String UserImage { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
 
@@ -52,10 +52,10 @@ namespace TermProject
 
         }
 
-        public Profile(Byte[] userimage, String firstname, String lastname, String streetaddress, String streetaddressln2, String city, String state, int zipcode, int age, double height, double weight, string ocupation, string interest, string likesdislikes, string favorites, string goals, string commitment, string kids, string wantkids, string religion)
+        public Profile(int userid, String userimage, String firstname, String lastname, String streetaddress, String streetaddressln2, String city, String state, int zipcode, int age, double height, double weight, string ocupation, string interest, string likesdislikes, string favorites, string goals, string commitment, string kids, string wantkids, string religion)
 
         {
-
+            this.UserID = userid;
             this.UserImage = userimage;
             this.FirstName = firstname;
             this.LastName = lastname;
@@ -79,7 +79,7 @@ namespace TermProject
             this.Kids = kids;
             this.WantKids = wantkids;
             this.Religion = religion;
-            
+
         }
 
     }
