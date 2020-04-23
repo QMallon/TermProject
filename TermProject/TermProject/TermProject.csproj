@@ -71,6 +71,7 @@
     <Content Include="Registration.aspx" />
     <Content Include="CreateProfile.aspx" />
     <Content Include="ProfileView.aspx" />
+    <Content Include="SearchPage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Profile.cs" />
@@ -110,6 +111,13 @@
     <Compile Include="ProfileView.aspx.designer.cs">
       <DependentUpon>ProfileView.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SearchPage.aspx.cs">
+      <DependentUpon>SearchPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchPage.aspx.designer.cs">
+      <DependentUpon>SearchPage.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="TermProject.Master" />
@@ -123,9 +131,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
-
       <Name>Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Img\Profiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
