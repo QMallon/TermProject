@@ -39,8 +39,10 @@ namespace DatingProfileAPI
             {
                 app.UseHsts();
             }
-
+            
+        
             app.UseHttpsRedirection();
+
             app.UseMvc();
         }
     }
