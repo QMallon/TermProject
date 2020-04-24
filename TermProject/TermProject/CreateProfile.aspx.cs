@@ -24,15 +24,14 @@ namespace TermProject
         string strUsername = "";
         string strUserImage = "";
         
-
         string strUserID = "";
   
-
         Validation validate = new Validation();
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             strUsername = Session["Username"].ToString();
            
 
@@ -50,6 +49,14 @@ namespace TermProject
 
 
         }
+
+
+        /*****************************************
+         This method validates that the user has a
+         account before allow him to create the 
+         new porfile, after the validation the 
+         createnewprofile() method is called. 
+        *****************************************/
 
         protected void btnSudmit_Click(object sender, EventArgs e)
         {
@@ -93,7 +100,12 @@ namespace TermProject
             }
 
         }
-
+        
+       /*****************************************
+        This method updload a img, jpg, bmp or gif
+        image to the server for be used as a 
+        profile image.
+       *****************************************/
         protected void UploadFile(object sender, EventArgs e)
         {
             int imgSize = 0;
@@ -101,15 +113,15 @@ namespace TermProject
             string folderPath = Server.MapPath("~/Img/Profiles");
 
 
-            //Check whether Directory (Folder) exists.
-            if (!Directory.Exists(folderPath))
+            
+            if (!Directory.Exists(folderPath)) //if directory wont exist
             {
-                //If Directory (Folder) does not exists Create it.
-                Directory.CreateDirectory(folderPath);
+                
+                Directory.CreateDirectory(folderPath); // if directory wont exist create the directory
+
             }
 
-            //Save the File to the Directory (Folder).
-            FileUpload1.SaveAs(folderPath + Path.GetFileName(FileUpload1.FileName));
+            FileUpload1.SaveAs(folderPath + Path.GetFileName(FileUpload1.FileName)); // save file to the directory img/profiles
 
 
             if (FileUpload1.HasFile) { 
@@ -146,45 +158,117 @@ namespace TermProject
             
             Image1.ImageUrl = "~/Img/Profiles/" + Path.GetFileName(FileUpload1.FileName);
 
-            strUserImage = Image1.ImageUrl;
 
         }
 
+
+        /*****************************************
+         This method creates a new profile saving
+         the new profile user info into a Profile()
+         Object and send it to the WebApi to be
+         Stored.   
+        *****************************************/
         private void CreateNewProfile() {
             
             profile = new Profile();
 
-            profile.UserID = int.Parse(strUserID);
-            profile.FirstName = txtFirstName.Text;
-            profile.LastName = txtLastName.Text;
-            profile.UserImage = strUserImage;
-            //----------- address ------------//
+            if (validate.IsText(txtFirstName.Text)
+                && validate.IsText(txtLastName.Text)
+                 && validate.IsNotNull(txtStreetAddress.Text)
+                  && validate.IsNotNull(txtStreetAddressLn2.Text)
+                   && validate.IsText(txtCity.Text)
+                    && validate.IsValidInt(txtZipcode.Text)
 
-            profile.StreetAddress = txtStreetAddress.Text;
-            profile.StreetAddressLn2 = txtStreetAddressLn2.Text;
-            profile.City = txtCity.Text;
-            profile.State = ddlState.SelectedValue;
-            profile.ZipCode = int.Parse(txtZipcode.Text);
+                    )
+            {
+                //---------- Main info ----------//
+
+                profile.UserID = int.Parse(strUserID);
+                profile.FirstName = txtFirstName.Text;
+                profile.LastName = txtLastName.Text;
+                profile.UserImage = strUserImage;
+
+
+                //----------- address ------------//
+
+                profile.StreetAddress = txtStreetAddress.Text;
+                profile.StreetAddressLn2 = txtStreetAddressLn2.Text;
+                profile.City = txtCity.Text;
+                profile.State = ddlState.SelectedValue;
+                profile.ZipCode = int.Parse(txtZipcode.Text);
+
+            }  else
+            {
+
+                lblStatus.ForeColor = Color.Red;
+                lblStatus.Text = "Please verity your imputs for your address.";
+
+            }
+
 
             //--------- Physical --------------//
+            if (validate.IsValidInt(txtAge.Text)
+                    && validate.IsValidDecimal(txtHeight.Text)
+                     && validate.IsValidDecimal(txtWeight.Text)
+                    )
+                {
+                    profile.Age = int.Parse(txtAge.Text);
+                    profile.Height = double.Parse(txtHeight.Text);
+                    profile.Weight = double.Parse(txtWeight.Text);
 
-            /*
-            profile.Age = int.Parse(txtAge.Text);
-            profile.Height = double.Parse(txtWeight.Text);
-            profile.Weight = double.Parse(txtWeight.Text);
-            
-            //---------- About ------------
+                }
+                else {
 
-            profile.Ocupation = txtOcupation.Text;
-            profile.Interest = txtInterest.Text;
-            profile.LikesDislikes = txtLikesDislikes.Text;
-            profile.Favorites = txtFavorites.Text;
-            profile.Goals = txtGoals.Text;
-            profile.Commitment = rblCommitment.SelectedValue;
-            profile.Kids = rbKids.SelectedValue;
-            profile.WantKids = rbWantKids.SelectedValue;
-            profile.Religion = ddlReligion.SelectedValue;
-            */
+                    txtAge.ForeColor = Color.Red;
+                    txtHeight.ForeColor = Color.Red;
+                    txtAge.ForeColor = Color.Red;
+
+                    lblStatus.ForeColor = Color.Red;
+                lblStatus.Text = "Verify your imputs there is something invalid.";
+
+                }
+
+                //---------- About ------------
+                if (validate.IsNotNull(txtOcupation.Text)
+                    && validate.IsNotNull(txtInterest.Text)
+                     && validate.IsNotNull(txtLikesDislikes.Text)
+                      && validate.IsNotNull(txtFavorites.Text)
+                        && validate.IsNotNull(txtGoals.Text)
+                           && validate.IsNotNull(rblCommitment.SelectedValue)
+                            && validate.IsNotNull(rbKids.SelectedValue)
+                             && validate.IsNotNull(rbWantKids.SelectedValue)
+                              && validate.IsNotNull(rbWantKids.SelectedValue)
+                               && validate.IsNotNull(ddlReligion.SelectedValue)
+                               )
+                {
+
+                    profile.Ocupation = txtOcupation.Text;
+                    profile.Interest = txtInterest.Text;
+                    profile.LikesDislikes = txtLikesDislikes.Text;
+                    profile.Favorites = txtFavorites.Text;
+                    profile.Goals = txtGoals.Text;
+                    profile.Commitment = rblCommitment.SelectedValue;
+                    profile.Kids = rbKids.SelectedValue;
+                    profile.WantKids = rbWantKids.SelectedValue;
+                    profile.Religion = ddlReligion.SelectedValue;
+                }
+                else {
+
+                    txtOcupation.ForeColor = Color.Red;
+                    txtInterest.ForeColor = Color.Red;
+                    txtLikesDislikes.ForeColor = Color.Red;
+                    txtFavorites.ForeColor = Color.Red;
+                    txtGoals.ForeColor = Color.Red;
+                    rblCommitment.ForeColor = Color.Red;
+                    rbKids.ForeColor = Color.Red;
+                    rbWantKids.ForeColor = Color.Red;
+                    ddlReligion.ForeColor = Color.Red;
+
+                    lblStatus.ForeColor = Color.Red;
+                lblStatus.Text = "Verify your imputs there is something invalid.";
+
+                }
+           
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             String JsonTeam = js.Serialize(profile);
@@ -224,7 +308,7 @@ namespace TermProject
                 {
 
                     lblStatus.ForeColor = Color.Red;
-                    lblStatus.Text = "[Server:Error new profile was not created]" + strUserID;
+                    lblStatus.Text = "[Server:Error new profile was not created]";
 
                 }
 
@@ -240,6 +324,9 @@ namespace TermProject
 
         }
 
+        /*****************************************
+         This cleans all the text fields.
+        *****************************************/
         private void CleanTextFields() {
 
             txtCity.Text = "";
@@ -249,98 +336,13 @@ namespace TermProject
             txtStreetAddress.Text = "";
             txtStreetAddressLn2.Text = "";
             txtZipcode.Text = "";
+
+
+
+
             
         }
-
-        protected void btnTest_Click(object sender, EventArgs e)
-        {
-
-            objDB = new DBConnect();
-            objCommand = new SqlCommand();
-
-            strUsername = Session["Username"].ToString();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_GetUserIDByUSername";
-
-            objCommand.Parameters.AddWithValue("@Username", strUsername);
-
-            DataSet ds = new DataSet();
-
-            ds = objDB.GetDataSetUsingCmdObj(objCommand);
-
-            strUserID = Convert.ToString(ds.Tables[0].Rows[0]["UserID"]); // get the userID using the username
-
-            profile = new Profile();
-
-            profile.UserID = int.Parse(strUserID);
-            profile.FirstName = txtFirstName.Text;
-            profile.LastName = txtLastName.Text;
-            profile.UserImage = strUserImage;
-            //----------- address ------------//
-
-            profile.StreetAddress = txtStreetAddress.Text;
-            profile.StreetAddressLn2 = txtStreetAddressLn2.Text;
-            profile.City = txtCity.Text;
-            profile.State = ddlState.SelectedValue;
-            profile.ZipCode = int.Parse(txtZipcode.Text);
-
-            objDB = new DBConnect();
-            objCommand = new SqlCommand();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_sp_addNewProfile";
-
-      
-            objCommand.Parameters.AddWithValue("@UserID", profile.UserID); // need a int value 
-
-
-            objCommand.Parameters.AddWithValue("@UserImage", profile.UserImage);
-            
-            objCommand.Parameters.AddWithValue("@FirstName", profile.FirstName);
-            objCommand.Parameters.AddWithValue("@LastName", profile.LastName);
-
-            objCommand.Parameters.AddWithValue("@StreetAddress", profile.StreetAddress);
-            objCommand.Parameters.AddWithValue("@StreetAddressLn2", profile.StreetAddressLn2);
-            objCommand.Parameters.AddWithValue("@City", profile.City);
-            objCommand.Parameters.AddWithValue("@State", profile.State);
-            objCommand.Parameters.AddWithValue("@ZipCode", profile.ZipCode);
-            /*
-            objCommand.Parameters.AddWithValue("@Age", profile.Age);
-            objCommand.Parameters.AddWithValue("@Height", profile.Height);
-            objCommand.Parameters.AddWithValue("@Weight", profile.Weight);
-
-            objCommand.Parameters.AddWithValue("@Ocupation", profile.Ocupation);
-            objCommand.Parameters.AddWithValue("@Interest", profile.Interest);
-            objCommand.Parameters.AddWithValue("@LikesDislikes", profile.LikesDislikes);
-            objCommand.Parameters.AddWithValue("@Favorites", profile.Favorites);
-            objCommand.Parameters.AddWithValue("@Goals", profile.Goals);
-            objCommand.Parameters.AddWithValue("@Kids", profile.Kids);
-            objCommand.Parameters.AddWithValue("@WantKids", profile.WantKids);
-            objCommand.Parameters.AddWithValue("@Religion", profile.Religion);
-           */
-            int result = objDB.DoUpdateUsingCmdObj(objCommand);
-
-            if (result > 0)
-            {
-
-                lblStatus.Text = "success" + " / " + strUserImage + " / " + profile.UserImage ;
-                
-
-            } else if (result < 0) {
-
-                lblStatus.Text = "Fail";
-
-            }
-            else {
-
-                lblStatus.Text = "Error";
-
-            }
-
-
-
-        }
+        
         
     }
      
