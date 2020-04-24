@@ -113,7 +113,9 @@ namespace DatingProfileAPI.Controllers
                 profile.ProfileID = int.Parse(record["ProfileId"].ToString());
                 profile.UserID = int.Parse(record["UserID"].ToString());
                 //profile.UserImage 
+
                 profile.FirstName = record["FirstName"].ToString();
+
                 profile.LastName = record["LastName"].ToString();
 
                 profile.StreetAddress = record["StreetAddress"].ToString();

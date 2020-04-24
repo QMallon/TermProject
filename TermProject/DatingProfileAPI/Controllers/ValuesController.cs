@@ -11,6 +11,7 @@ namespace DatingProfileAPI.Controllers
     public class ValuesController : ControllerBase
     {
         // GET api/values
+        [Route("api/[controller]")]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {

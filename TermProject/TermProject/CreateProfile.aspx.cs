@@ -277,6 +277,7 @@ namespace TermProject
             {
 
                 WebRequest request = WebRequest.Create("https://localhost:44345/api/profile/"); //webrequest for the api localhost
+
                 //WebRequest request = WebRequest.Create(""); //webrequest for the api published version
 
                 request.Method = "POST";
