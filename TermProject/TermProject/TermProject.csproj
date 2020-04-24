@@ -123,7 +123,7 @@
     </Compile>
     <Compile Include="SearchPage.aspx.designer.cs">
       <DependentUpon>SearchPage.aspx</DependentUpon>
-
+    </Compile>
     <Compile Include="DateRequest.aspx.cs">
       <DependentUpon>DateRequest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

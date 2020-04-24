@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TermProject
 {
-    public partial class WebForm5 : System.Web.UI.Page
+    public partial class DateRequest : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

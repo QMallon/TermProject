@@ -123,7 +123,7 @@ namespace DatingProfileAPI.Controllers
                 profile.City = record["City"].ToString();
                 profile.State = record["State"].ToString();
                 profile.ZipCode = int.Parse(record["Zipcode"].ToString());
-        /*
+
                 profile.Age = int.Parse(record["Age"].ToString());
                 profile.Height = int.Parse(record["Height"].ToString());
                 profile.Weight = double.Parse(record["Weight"].ToString());
@@ -136,7 +136,7 @@ namespace DatingProfileAPI.Controllers
                 profile.Kids = record["Kids"].ToString();
                 profile.WantKids = record["WantKids"].ToString();
                 profile.Religion = record["Religion"].ToString();
-                */
+
 
             }
 

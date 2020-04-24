@@ -19,27 +19,32 @@ namespace TermProject
         DBConnect objDB = new DBConnect();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string Username = Session["Username"].ToString();
-           
+            //string Username = Session["Username"].ToString();
+
             SqlCommand objCommand = new SqlCommand();
             objDB = new DBConnect();
             objCommand = new SqlCommand();
+            int ID = Convert.ToInt32(Session["CurrentUserID"]);
 
             objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_GetUserIDByUSername";
+            objCommand.CommandText = "TP_GetProfileByUserID";
 
-            objCommand.Parameters.AddWithValue("@Username", Username);
-            DataSet UserID = objDB.GetDataSetUsingCmdObj(objCommand);
-            int ID = Convert.ToInt32(UserID.Tables[0].Rows[0][0].ToString());
-            Session["CurrentUserID"] = ID;
-            viewProfilenonUser(ID);
+            objCommand.Parameters.AddWithValue("@UserId", ID);
+            DataSet ProfileID = objDB.GetDataSetUsingCmdObj(objCommand);
+            int profileID = Convert.ToInt32(ProfileID.Tables[0].Rows[0][0].ToString());
+
+
+            //int ID = 0 ;
+
+            
+            viewProfilenonUser(profileID);
             
             
         }
 
         public void viewProfilenonUser(int ID)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("api/Profile");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:44345/api/profile/" + ID);
             WebResponse response = request.GetResponse();
 
             Stream theDataStream = response.GetResponseStream();
@@ -60,7 +65,7 @@ namespace TermProject
 
             Profile currentProfile = js.Deserialize<Profile>(data);
             
-            string Name = currentProfile.FirstName + ", " + currentProfile.LastName;
+            string Name = currentProfile.FirstName + " " + currentProfile.LastName;
             string personalInfo = "Age: " + currentProfile.Age + "\nWeight:  " +
                 currentProfile.Weight + "\nHeight: " + currentProfile.Height + "\nLocation: " + currentProfile.City;
             string values = "Occupation: " + currentProfile.Ocupation + "\nReligion: "+ currentProfile.Religion+ "\nCommitment: " + currentProfile.Commitment + "\nKids: " + currentProfile.Kids
