@@ -59,9 +59,11 @@ namespace TermProject
 
                     DataSet loginFound = dBConnect.GetDataSetUsingCmdObj(objCommand);
                     int loginset = Convert.ToInt32(loginFound.Tables[0].Rows[0][0].ToString());
-                    if (loginset > 0)
+                    if (loginset  !=  0)
                     {
                         Session["Username"] = txtUserName.Text;
+                        Session["UserID"] = loginset;
+                        Session["CurrentUserID"] = loginset;
                         if (chkRemember.Checked == true)
                         {
                             //Cookie
