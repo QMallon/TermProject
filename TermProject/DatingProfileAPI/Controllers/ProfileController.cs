@@ -171,8 +171,9 @@ namespace DatingProfileAPI.Controllers
             objCommand.Parameters.AddWithValue("@City", profile.City);
             objCommand.Parameters.AddWithValue("@State", profile.State);
             objCommand.Parameters.AddWithValue("@ZipCode", profile.ZipCode);
-            /*
+            
             objCommand.Parameters.AddWithValue("@Age", profile.Age);
+         
             objCommand.Parameters.AddWithValue("@Height", profile.Height);
             objCommand.Parameters.AddWithValue("@Weight", profile.Weight);
 
@@ -181,10 +182,12 @@ namespace DatingProfileAPI.Controllers
             objCommand.Parameters.AddWithValue("@LikesDislikes", profile.LikesDislikes);
             objCommand.Parameters.AddWithValue("@Favorites", profile.Favorites);
             objCommand.Parameters.AddWithValue("@Goals", profile.Goals);
+            objCommand.Parameters.AddWithValue("@Commitment", profile.Commitment);
             objCommand.Parameters.AddWithValue("@Kids", profile.Kids);
             objCommand.Parameters.AddWithValue("@WantKids", profile.WantKids);
             objCommand.Parameters.AddWithValue("@Religion", profile.Religion);
-           */
+         
+
             int result = objDB.DoUpdateUsingCmdObj(objCommand);
 
             if (result > 0)

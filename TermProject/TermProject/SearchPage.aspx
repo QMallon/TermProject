@@ -4,6 +4,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+  
+
     <div runat="server" id="divSearchFilter">
     <!----------Username----------->
 
@@ -185,17 +187,19 @@
         <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" />
     <br>
     </div>
+
     <hr>
 
     <asp:Repeater ID="rpProfiles" runat="server">
 
                <ItemTemplate>
                
-                    <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="col-lg-8 col-md-2 col-sm-4">
 
                             <div class="card " style="text-align:center;background-color:lightgray;border-radius: 5px;">
 
-                                <asp:Image ID="imgRpt" runat="server" ImageUrl='<%#Eval("Userimage")%>' Width="160px" Height="160px" ></asp:Image>
+                                <br>
+                                <asp:Image style=" margin: auto;width: 50%; border: 3px solid white;  padding: 10px;" ID="imgRpt" runat="server" ImageUrl='<%#Eval("Userimage")%>' Width="160px" Height="160px" ></asp:Image>
                                 
                                 <div class="card-header" >
                             
@@ -226,5 +230,5 @@
                     </ItemTemplate>
         
     </asp:Repeater>
-   
+
 </asp:Content>

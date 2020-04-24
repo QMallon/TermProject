@@ -26,27 +26,7 @@ namespace Utilities
                 }
 
             } // validate that the string only contain letters
-
-            public bool IsProperString(string s)
-            {
-
-
-                foreach (char c in s)  // for every character in the string 
-                {
-
-                    if (!Char.IsLetter(c) && c != ',') // if the character is not a letter or "," 
-                    {
-
-                        return false;
-
-                    }
-
-                }
-
-                return true;
-
-            } // validate that the string only has letter or , 
-
+        
             public bool IsNumberPhoneNumber(string s)
             {
 
@@ -104,7 +84,34 @@ namespace Utilities
 
             } // validate that the string is a decimal
 
+            public bool IsValidInt(string s){
 
+                bool boolValue = false ;
+                int val = 0;
+
+                boolValue = int.TryParse(s, out val);
+
+                return boolValue;
+
+             }  // validate is a valid integer
+        
+            public bool IsValidEmail(string s)
+        {
+            try
+            {
+
+                var validEmail = new System.Net.Mail.MailAddress(s);
+                return validEmail.Address == s;
+
+            }
+            catch
+            {
+
+                 return false;
+
+            }
+        } // validate email address
+        
     }
 
 

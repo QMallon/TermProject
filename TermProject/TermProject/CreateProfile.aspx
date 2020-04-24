@@ -199,7 +199,7 @@
 
             <!-------Goals------->
 
-    <asp:Label ID="lblGoals" runat="server" Text="Favorites:" AssociatedControlID="txtGoals"></asp:Label>
+    <asp:Label ID="lblGoals" runat="server" Text="Goals:" AssociatedControlID="txtGoals"></asp:Label>
     <asp:TextBox ID="txtGoals" runat="server" class="form-control" TextMode="MultiLine"></asp:TextBox>
      
             <!-------Commitment------------>
@@ -262,8 +262,10 @@
             
             <br>
             <asp:Button ID="btnSudmit" runat="server" Text="Submit" OnClick="btnSudmit_Click" class="btn btn-success" /> <!--Submit button--->
-            <asp:Button ID="btnTest" runat="server" Text="Test" OnClick="btnTest_Click" />
+            
+            <br>
             <asp:Label ID="lblStatus" runat="server" Text=""></asp:Label>
+        
         </div>
         </form>
         <!-- Form -->

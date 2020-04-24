@@ -43,7 +43,7 @@ namespace TermProject
             
             if (strPassword == strConfirmPassword && validate.IsNotNull(strPassword)) // Validate password
             {
-                if (strEmail == strConfirmEmail && validate.IsNotNull(strEmail)) // validate email
+                if (validate.IsValidEmail(strEmail) && strEmail == strConfirmEmail && validate.IsNotNull(strEmail)) // validate email
 
                     if (strQuestion != strQuestion2 && strQuestion2 != strQuestion3 && strQuestion3 != strQuestion) // validate questions 
 
