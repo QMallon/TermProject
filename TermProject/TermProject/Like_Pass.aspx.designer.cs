@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TermProject {
-    
-    
-    public partial class WebForm6 {
-        
+namespace TermProject
+{
+
+
+    public partial class WebForm6
+    {
+
         /// <summary>
         /// gvLikes control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvLikes;
-        
+
         /// <summary>
         /// gvDislikes control.
         /// </summary>
