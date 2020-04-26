@@ -110,7 +110,7 @@ namespace TermProject
         {
             int imgSize = 0;
             string fileExt,imgName,imgType;
-            string folderPath = Server.MapPath("~/Img/Profiles");
+            string folderPath = Server.MapPath("~/Img/Profiles/");
 
 
             
@@ -121,14 +121,15 @@ namespace TermProject
 
             }
 
-            FileUpload1.SaveAs(folderPath + Path.GetFileName(FileUpload1.FileName)); // save file to the directory img/profiles
+            
 
+            
 
             if (FileUpload1.HasFile) { 
 
-                imgSize = FileUpload1.PostedFile.ContentLength;
+                imgSize = FileUpload1.PostedFile.ContentLength; //get the size of the image in bytes 
 
-                byte[] imgData = new byte[imgSize];
+                byte[] imgData = new byte[imgSize]; 
 
                 FileUpload1.PostedFile.InputStream.Read(imgData, 0, imgSize);
                 imgName = FileUpload1.PostedFile.FileName;
@@ -141,6 +142,10 @@ namespace TermProject
 
                 {
                     
+                   
+                    FileUpload1.SaveAs(folderPath + strUsername + fileExt); // save file to the directory img/profiles
+                    Image1.ImageUrl = folderPath + strUsername + fileExt;
+                    strUserImage = Image1.ImageUrl;
                     Image1.BorderColor = Color.Green;
 
                 }
@@ -156,7 +161,7 @@ namespace TermProject
                 
             } 
             
-            Image1.ImageUrl = "~/Img/Profiles/" + Path.GetFileName(FileUpload1.FileName);
+            
 
 
         }
@@ -169,78 +174,82 @@ namespace TermProject
          Stored.   
         *****************************************/
         private void CreateNewProfile() {
-            
+
             profile = new Profile();
 
-            if (validate.IsText(txtFirstName.Text)
-                && validate.IsText(txtLastName.Text)
-                 && validate.IsNotNull(txtStreetAddress.Text)
-                  && validate.IsNotNull(txtStreetAddressLn2.Text)
-                   && validate.IsText(txtCity.Text)
-                    && validate.IsValidInt(txtZipcode.Text)
 
-                    )
+            //---------- Main info ----------//
+
+
+            profile.UserID = int.Parse(strUserID);
+            if (String.IsNullOrWhiteSpace(txtFirstName.Text)
+                || String.IsNullOrWhiteSpace(txtLastName.Text))
             {
-                //---------- Main info ----------//
-
-                profile.UserID = int.Parse(strUserID);
                 profile.FirstName = txtFirstName.Text;
                 profile.LastName = txtLastName.Text;
                 profile.UserImage = strUserImage;
+            }
+            else {
 
+                txtFirstName.ForeColor = Color.Red;
+                txtLastName.ForeColor = Color.Red;
+                lblStatus.ForeColor = Color.Red;
+                lblStatus.Text = "Please check the values entered.";
 
-                //----------- address ------------//
+            }
+
+            //----------- address ------------//
+            if (String.IsNullOrEmpty(txtStreetAddress.Text)
+              || String.IsNullOrEmpty(txtStreetAddressLn2.Text)
+               || String.IsNullOrEmpty(txtCity.Text))
+            {
 
                 profile.StreetAddress = txtStreetAddress.Text;
                 profile.StreetAddressLn2 = txtStreetAddressLn2.Text;
                 profile.City = txtCity.Text;
                 profile.State = ddlState.SelectedValue;
-                profile.ZipCode = int.Parse(txtZipcode.Text);
+            }
+            else {
 
-            }  else
-            {
+                txtStreetAddress.ForeColor = Color.Red;
+                txtStreetAddressLn2.ForeColor = Color.Red;
+                txtCity.ForeColor = Color.Red;
 
-                lblStatus.ForeColor = Color.Red;
-                lblStatus.Text = "Please verity your imputs for your address.";
+                lblStatus.Text = "Please check the values entered.";
 
             }
+                if(String.IsNullOrWhiteSpace(txtZipcode.Text) 
+                || txtZipcode.Text.Length != 5
+                 || txtZipcode.Text.All(char.IsDigit) == false) {
 
+                profile.ZipCode = int.Parse(txtZipcode.Text);
 
+                } else{
+
+                txtZipcode.ForeColor = Color.Red;
+                lblStatus.Text = "Please check the values entered.";
+
+            }
             //--------- Physical --------------//
-            if (validate.IsValidInt(txtAge.Text)
-                    && validate.IsValidDecimal(txtHeight.Text)
-                     && validate.IsValidDecimal(txtWeight.Text)
-                    )
-                {
-                    profile.Age = int.Parse(txtAge.Text);
-                    profile.Height = double.Parse(txtHeight.Text);
-                    profile.Weight = double.Parse(txtWeight.Text);
 
-                }
-                else {
+            if (txtAge.Text.All(char.IsNumber) == false
+            || txtHeight.Text.All(char.IsNumber) == false
+             || txtWeight.Text.All(char.IsNumber) == false)
+            {
+                profile.Age = int.Parse(txtAge.Text);
+                profile.Height = double.Parse(txtHeight.Text);
+                profile.Weight = double.Parse(txtWeight.Text);
+            }
+            else {
 
-                    txtAge.ForeColor = Color.Red;
-                    txtHeight.ForeColor = Color.Red;
-                    txtAge.ForeColor = Color.Red;
+                txtAge.ForeColor = Color.Red;
+                txtHeight.ForeColor = Color.Red;
+                txtWeight.ForeColor = Color.Red;
+                lblStatus.Text = "Please check the values entered.";
+                
+            }
 
-                    lblStatus.ForeColor = Color.Red;
-                lblStatus.Text = "Verify your imputs there is something invalid.";
-
-                }
-
-                //---------- About ------------
-                if (validate.IsNotNull(txtOcupation.Text)
-                    && validate.IsNotNull(txtInterest.Text)
-                     && validate.IsNotNull(txtLikesDislikes.Text)
-                      && validate.IsNotNull(txtFavorites.Text)
-                        && validate.IsNotNull(txtGoals.Text)
-                           && validate.IsNotNull(rblCommitment.SelectedValue)
-                            && validate.IsNotNull(rbKids.SelectedValue)
-                             && validate.IsNotNull(rbWantKids.SelectedValue)
-                              && validate.IsNotNull(rbWantKids.SelectedValue)
-                               && validate.IsNotNull(ddlReligion.SelectedValue)
-                               )
-                {
+            //---------- About ------------
 
                     profile.Ocupation = txtOcupation.Text;
                     profile.Interest = txtInterest.Text;
@@ -251,24 +260,7 @@ namespace TermProject
                     profile.Kids = rbKids.SelectedValue;
                     profile.WantKids = rbWantKids.SelectedValue;
                     profile.Religion = ddlReligion.SelectedValue;
-                }
-                else {
-
-                    txtOcupation.ForeColor = Color.Red;
-                    txtInterest.ForeColor = Color.Red;
-                    txtLikesDislikes.ForeColor = Color.Red;
-                    txtFavorites.ForeColor = Color.Red;
-                    txtGoals.ForeColor = Color.Red;
-                    rblCommitment.ForeColor = Color.Red;
-                    rbKids.ForeColor = Color.Red;
-                    rbWantKids.ForeColor = Color.Red;
-                    ddlReligion.ForeColor = Color.Red;
-
-                    lblStatus.ForeColor = Color.Red;
-                lblStatus.Text = "Verify your imputs there is something invalid.";
-
-                }
-           
+          
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             String JsonTeam = js.Serialize(profile);
@@ -337,10 +329,6 @@ namespace TermProject
             txtStreetAddress.Text = "";
             txtStreetAddressLn2.Text = "";
             txtZipcode.Text = "";
-
-
-
-
             
         }
         
