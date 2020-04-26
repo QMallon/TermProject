@@ -18,6 +18,7 @@ namespace TermProject
     public partial class WebForm4 : System.Web.UI.Page
     {
         DBConnect objDB = new DBConnect();
+        Profile currentProfile = new Profile();
         protected void Page_Load(object sender, EventArgs e)
         {
             //string Username = Session["Username"].ToString();
@@ -65,11 +66,14 @@ namespace TermProject
 
             JavaScriptSerializer js = new JavaScriptSerializer();
 
-            Profile currentProfile = js.Deserialize<Profile>(data);
+            currentProfile = js.Deserialize<Profile>(data);
 
             string Name = currentProfile.FirstName + " " + currentProfile.LastName;
 
-
+            if(Session["UserID"].ToString() == Session["CurrentUserID"].ToString())
+            {
+                Session["UsersName"] = currentProfile.FirstName;
+            }
 
             string personalInfo = getProfilePI(currentProfile);
             //PersonalInfo.InnerHtml = getProfilePI(currentProfile);
@@ -249,7 +253,67 @@ namespace TermProject
             return PV;
         }
 
-        
+        protected void btnDateRequest_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
+        }
+
+        protected void btnDateRequest_Click1(object sender, EventArgs e)
+        {
+            pnlDateRequest.Visible = true;
+        }
+
+        protected void btnDateSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(Session["UsersName"].ToString() != currentProfile.FirstName)
+                {
+                    DateTime date = Convert.ToDateTime(txtDate.Text);
+                    string location = txtLocation.Text;
+                    string desc = txtDescription.Text;
+
+                    SqlCommand objCommand = new SqlCommand();
+                    objDB = new DBConnect();
+                    objCommand = new SqlCommand();
+                    int ID1 = Convert.ToInt32(Session["UserID"]);
+                    int ID2 = currentProfile.UserID;
+
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "TP_CreateDate";
+                    objCommand.Parameters.AddWithValue("@UserId1", ID1);
+                    objCommand.Parameters.AddWithValue("@UserId2", ID2);
+                    objCommand.Parameters.AddWithValue("@Location", ID2);
+                    objCommand.Parameters.AddWithValue("@Date", ID2);
+                    objCommand.Parameters.AddWithValue("@Description", ID2);
+                    objCommand.Parameters.AddWithValue("@UserName1", Session["UsersName"].ToString());
+                    objCommand.Parameters.AddWithValue("@UserName2", currentProfile.FirstName);
+                    objDB.DoUpdateUsingCmdObj(objCommand);
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Cannot Date yourself Error");
+                }
+
+
+
+
+
+
+
+                pnlDateRequest.Visible = false;
+            }
+            catch
+            {
+                MessageBox.Show("Date Request Error");
+                pnlDateRequest.Visible = false;
+            }
+            
+
+        }
     }
     
 }
