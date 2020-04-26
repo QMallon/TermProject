@@ -17,14 +17,14 @@
             <h2>Personal Info</h2>
             
         </div>
-        <div class="row">
-            <asp:Label ID="lblPersonalInfo" runat="server" Text="Label"></asp:Label>
+        <div class="row" style="white-space:pre-wrap;" runat="server" id="PersonalInfo">
+            <asp:Label class="" ID="lblPersonalInfo" runat="server" Text="Label"></asp:Label>
         </div>
         <div class ="row">
             <h2>Values</h2>
             
         </div>
-        <div class="row">
+        <div class="row" style="white-space:pre-wrap;">
             <asp:Label ID="lblValues" runat="server" Text="Label"></asp:Label>
         </div>
 
@@ -32,16 +32,16 @@
             <h2>Interests</h2>
             
         </div>
-        <div class="row">
+        <div class="row" style="white-space:pre-wrap;">
             <asp:Label ID="lblInterests" runat="server" Text="Label"></asp:Label>
         </div>
 
         
-        <div class ="row">
+        <div class ="row" style="white-space:pre-wrap;">
             <h2>Likes and Dislikes</h2>
             
         </div>
-        <div class="row">
+        <div class="row" style="white-space:pre-wrap;">
             <asp:Label ID="lblLikes" runat="server" Text="Label"></asp:Label>
         </div>
         
@@ -58,7 +58,33 @@
         </div>
         <div class="row">
         <asp:Button class="btn-primary" ID="btnMessage" runat="server" Text="Message" />
+        <asp:Button class="btn-primary" ID="btnDateRequest" runat="server" Text="Request Date" OnClick="btnDateRequest_Click1"  />
         </div>
         </div>
+    <asp:Panel ID="pnlDateRequest" runat="server" style="margin-top: 1px" Visible="False">
+        <h2>Date Request</h2>
+        <label class="col-form-label" for="txtLocation">Enter Location</label>
+        <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
+        <label class="col-form-label" for="txtDescription">Enter Description</label>
+        <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
+        <label class="col-form-label" for="txtDate">Select Date</label>
+        <asp:TextBox ID="txtDate" class="input-append date" runat="server"></asp:TextBox>
+        
+
+
+
+
+
+
+        <asp:Button ID="btnDateSubmit" CssClass="btn-success" runat="server" Text="Submit" OnClick="btnDateSubmit_Click" />
+        
+
+
+
+
+
+
+    </asp:Panel>
+</div>
 
 </asp:Content>

@@ -7,18 +7,18 @@
             <div class="column">
                 <h2>Liked</h2>
                 <div class="table-responsive-md">
-                    <asp:GridView ID="gvLikes" runat="server" AutoGenerateColumns="False">
+                    <asp:GridView ID="gvLikes" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvLikes_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField DataField="firstname" HeaderText="First Name" />
                             <asp:BoundField DataField="lastName" HeaderText="Last Name" />
                             <asp:TemplateField HeaderText="Pass">
                                 <ItemTemplate>
-                                    <asp:Button class="btn-danger" ID="btnPass" runat="server" OnClick="Button1_Click" Text="Pass" />
+                                    <asp:Button ID="btnPass" class="btn-danger" runat="server" OnClick="btnPass_Click" Text="Pass" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="View">
+                            <asp:TemplateField HeaderText="View Profile">
                                 <ItemTemplate>
-                                    <asp:Button class="btn-success" ID="btnView" runat="server" OnClick="Button1_Click1" Text="View Profile" />
+                                    <asp:Button ID="btnViewProfile" CssClass="btn-info" runat="server" OnClick="Button1_Click2" Text="View Profile" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -29,18 +29,18 @@
             <div class="column">
                 <h2>Passed</h2>
                 <div class="table-responsive-md">
-                    <asp:GridView ID="gvDislikes" runat="server" AutoGenerateColumns="False">
+                    <asp:GridView ID="gvDislikes" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvDislikes_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField DataField="firstName" HeaderText="First Name" />
                             <asp:BoundField DataField="lastName" HeaderText="Last Name" />
-                            <asp:TemplateField>
+                            <asp:TemplateField HeaderText="Like">
                                 <ItemTemplate>
-                                    <asp:Button class="btn-danger" ID="Button2" runat="server" OnClick="Button1_Click" Text="Pass" />
+                                    <asp:Button ID="btnLike" class="btn-primary" runat="server" Text="Like" OnClick="btnLike_Click" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField>
+                            <asp:TemplateField HeaderText="View Profile">
                                 <ItemTemplate>
-                                    <asp:Button class="btn-success" ID="Button1" runat="server" OnClick="Button1_Click1" Text="View Profile" />
+                                    <asp:Button ID="btnviewProfiledlike" runat="server" OnClick="Button1_Click2" CssClass="btn-info" Text="View Profile" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

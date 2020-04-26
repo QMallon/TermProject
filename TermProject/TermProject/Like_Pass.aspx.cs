@@ -36,6 +36,7 @@ namespace TermProject
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+           // 
 
         }
 
@@ -153,6 +154,93 @@ namespace TermProject
 
 
             return passedProfiles;
+        }
+
+        protected void gvLikes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedrow = gvLikes.SelectedRow.RowIndex;
+            Likes.RemoveAt(selectedrow);
+            updateLikes();
+
+        }
+
+        private void updateLikes()
+        {
+            SqlCommand objCommand = new SqlCommand();
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            MemoryStream stream = new MemoryStream();
+            List<int> likesints = new List<int>();
+            foreach (Profile x in Likes)
+            {
+                likesints.Add(x.ProfileID);
+            }
+            Byte[] Store;
+
+            serializer.Serialize(stream, likesints);
+
+            Store = stream.ToArray();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_StoreLikes";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["UserID"].ToString());
+            objCommand.Parameters.AddWithValue("@Pass", Store);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
+        private void updatePasses()
+        {
+            SqlCommand objCommand = new SqlCommand();
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            MemoryStream stream = new MemoryStream();
+            List<int> passesints= new List<int>();
+            foreach(Profile x in Passes)
+            {
+                passesints.Add(x.ProfileID);
+            }
+            Byte[] Store;
+
+            serializer.Serialize(stream, passesints);
+
+            Store = stream.ToArray();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_StorePass";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["UserID"].ToString());
+            objCommand.Parameters.AddWithValue("@Pass", Store);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
+
+        protected void gvDislikes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedrow = gvLikes.SelectedRow.RowIndex;
+           
+        }
+
+        protected void Button1_Click2(object sender, EventArgs e)
+        {
+            int selectedRow = ((GridViewRow)((Control)sender).NamingContainer).RowIndex;
+            Session["CurrentUserId"] = selectedRow;
+            Response.Redirect("ProfileView.aspx");
+
+
+        }
+
+        protected void btnPass_Click(object sender, EventArgs e)
+        {
+            int selectedRow = ((GridViewRow)((Control)sender).NamingContainer).RowIndex;
+            Likes.RemoveAt(selectedRow);
+            updateLikes();
+
+        }
+
+        protected void btnLike_Click(object sender, EventArgs e)
+        {
+            int selectedRow = ((GridViewRow)((Control)sender).NamingContainer).RowIndex;
+            Passes.RemoveAt(selectedRow);
+            updatePasses();
         }
     }
 }
