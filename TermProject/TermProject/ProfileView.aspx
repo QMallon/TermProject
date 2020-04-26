@@ -57,7 +57,33 @@
         </div>
         <div class="row">
         <asp:Button class="btn-primary" ID="btnMessage" runat="server" Text="Message" />
+        <asp:Button class="btn-primary" ID="btnDateRequest" runat="server" Text="Request Date" OnClick="btnDateRequest_Click1"  />
         </div>
         </div>
+    <asp:Panel ID="pnlDateRequest" runat="server" style="margin-top: 1px" Visible="False">
+        <h2>Date Request</h2>
+        <label class="col-form-label" for="txtLocation">Enter Location</label>
+        <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
+        <label class="col-form-label" for="txtDescription">Enter Description</label>
+        <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
+        <label class="col-form-label" for="txtDate">Select Date</label>
+        <asp:TextBox ID="txtDate" class="input-append date" runat="server"></asp:TextBox>
+        
+
+
+
+
+
+
+        <asp:Button ID="btnDateSubmit" CssClass="btn-success" runat="server" Text="Submit" OnClick="btnDateSubmit_Click" />
+        
+
+
+
+
+
+
+    </asp:Panel>
+</div>
 
 </asp:Content>

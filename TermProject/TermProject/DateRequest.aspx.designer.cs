@@ -11,7 +11,7 @@ namespace TermProject
 {
 
 
-    public partial class WebForm5
+    public partial class DateRequest
     {
 
         /// <summary>
