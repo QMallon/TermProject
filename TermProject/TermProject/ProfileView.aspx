@@ -16,14 +16,14 @@
             <h2>Personal Info</h2>
             
         </div>
-        <div class="row">
-            <asp:Label ID="lblPersonalInfo" runat="server" Text="Label"></asp:Label>
+        <div class="row" style="white-space:pre-wrap;" runat="server" id="PersonalInfo">
+            <asp:Label class="" ID="lblPersonalInfo" runat="server" Text="Label"></asp:Label>
         </div>
         <div class ="row">
             <h2>Values</h2>
             
         </div>
-        <div class="row">
+        <div class="row" style="white-space:pre-wrap;">
             <asp:Label ID="lblValues" runat="server" Text="Label"></asp:Label>
         </div>
 
@@ -31,16 +31,16 @@
             <h2>Interests</h2>
             
         </div>
-        <div class="row">
+        <div class="row" style="white-space:pre-wrap;">
             <asp:Label ID="lblInterests" runat="server" Text="Label"></asp:Label>
         </div>
 
         
-        <div class ="row">
+        <div class ="row" style="white-space:pre-wrap;">
             <h2>Likes and Dislikes</h2>
             
         </div>
-        <div class="row">
+        <div class="row" style="white-space:pre-wrap;">
             <asp:Label ID="lblLikes" runat="server" Text="Label"></asp:Label>
         </div>
         

@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows;
 using Utilities;
 
 namespace TermProject
@@ -31,16 +32,16 @@ namespace TermProject
 
             objCommand.Parameters.AddWithValue("@UserId", ID);
             DataSet ProfileID = objDB.GetDataSetUsingCmdObj(objCommand);
-            
+
             int profileID = Convert.ToInt32(ProfileID.Tables[0].Rows[0][0].ToString());
 
 
             //int ID = 0 ;
 
-            
+
             viewProfilenonUser(profileID);
-            
-            
+
+
         }
 
         public void viewProfilenonUser(int ID)
@@ -65,12 +66,13 @@ namespace TermProject
             JavaScriptSerializer js = new JavaScriptSerializer();
 
             Profile currentProfile = js.Deserialize<Profile>(data);
-            
+
             string Name = currentProfile.FirstName + " " + currentProfile.LastName;
 
 
 
             string personalInfo = getProfilePI(currentProfile);
+            //PersonalInfo.InnerHtml = getProfilePI(currentProfile);
 
 
 
@@ -83,7 +85,7 @@ namespace TermProject
 
             string Favorites = currentProfile.Favorites;
 
-            //imgProfilePicture.ImageUrl = currentProfile.UserImage;
+            imgProfilePicture.ImageUrl = currentProfile.UserImage;
 
             lblName.Text = Name;
             lblFavorites.Text = Favorites;
@@ -192,21 +194,25 @@ namespace TermProject
         private string getProfilePI(Profile x)
         {
             string PI = "";
-            if (x.Age != 0)             
+            if (x.Age != 0 )
             {
                 PI += "Age: " + x.Age;
             }
-            if(x.Weight != 0)
+            if (x.Weight != 0)
             {
-                PI += "\r\nWeight:  " + x.Weight;
+                PI += "\nWeight:  " + x.Weight;
             }
-            if(x.Height != 0)
+            if (x.Height != 0)
             {
-                PI += "\r\nHeight: " + x.Height;
+                PI += "\nHeight: " + x.Height;
             }
-            if(x.City != "")
+            if (x.City != "" && x.City != null)
             {
-                PI += "\r\nLocation: " + x.City;
+                PI += "\nCity: " + x.City;
+            }
+            if (x.Ocupation != "" && x.Ocupation != null)
+            {
+                PI += "\nOccupation: " + x.Ocupation;
             }
 
 
@@ -217,23 +223,20 @@ namespace TermProject
         private string getProfileValues(Profile x)
         {
             string PV = "";
-            if(x.Ocupation != "")
+            
+            if (x.Religion != "" && x.Religion != null)
             {
-                PV += "Occupation: " + x.Ocupation;
+                PV +=  "Religion: " + x.Religion;
             }
-            if(x.Religion != "")
+            if (x.Commitment != "" && x.Commitment != null)
             {
-                PV += "\r\nReligion: " + x.Religion;
+                PV +=   "\nCommitment: " + x.Commitment;
             }
-            if(x.Commitment != "")
+            if(x.Kids != "" && x.Kids != null)
             {
-                PV += "\r\nCommitment: " + x.Commitment;
+                PV +=    "\nKids: " + x.Kids;
             }
-            if(x.Kids != "")
-            {
-                PV += "\nKids: " + x.Kids;
-            }
-            if(x.WantKids != "")
+            if(x.WantKids != "" && x.WantKids != null)
             {
                 PV += "\nWant Kids: " + x.WantKids;
             }
@@ -242,7 +245,7 @@ namespace TermProject
 
 
 
-
+            //MessageBox.Show(PV);
             return PV;
         }
 

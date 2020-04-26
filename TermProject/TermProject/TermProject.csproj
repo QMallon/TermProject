@@ -47,6 +47,7 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System.Device" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -71,12 +72,9 @@
     <Content Include="Registration.aspx" />
     <Content Include="CreateProfile.aspx" />
     <Content Include="ProfileView.aspx" />
-
     <Content Include="SearchPage.aspx" />
-
     <Content Include="DateRequest.aspx" />
     <Content Include="Like_Pass.aspx" />
-
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Profile.cs" />
@@ -116,7 +114,6 @@
     <Compile Include="ProfileView.aspx.designer.cs">
       <DependentUpon>ProfileView.aspx</DependentUpon>
     </Compile>
-
     <Compile Include="SearchPage.aspx.cs">
       <DependentUpon>SearchPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,7 +134,6 @@
     </Compile>
     <Compile Include="Like_Pass.aspx.designer.cs">
       <DependentUpon>Like_Pass.aspx</DependentUpon>
-
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
-
       <Project>{051b52d3-4dbf-47a0-b577-627d038ede41}</Project>
-
       <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
