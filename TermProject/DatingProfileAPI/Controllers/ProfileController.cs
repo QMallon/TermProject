@@ -55,8 +55,6 @@ namespace DatingProfileAPI.Controllers
 
                 profile.ZipCode = int.Parse(record["Zipcode"].ToString());
 
-                /*
-
                 profile.Age = int.Parse(record["Age"].ToString());
 
                 profile.Height = double.Parse(record["Height"].ToString());
@@ -71,7 +69,6 @@ namespace DatingProfileAPI.Controllers
                 profile.Kids = record["Kids"].ToString();
                 profile.WantKids = record["WantKids"].ToString();
                 profile.Religion = record["Religion"].ToString();
-                */
 
                 profiles.Add(profile);
 
@@ -80,8 +77,7 @@ namespace DatingProfileAPI.Controllers
             return profiles;
 
         }
-
-
+        
         // GET: api/Profile/5
         [HttpGet("{id}", Name = "Get")]
         public Profile Get(int id) // get the profile by user ID
@@ -144,8 +140,7 @@ namespace DatingProfileAPI.Controllers
 
 
         }
-
-
+        
         // POST: api/Profile
         [HttpPost]
         public Boolean AddProfile([FromBody] Profile profile) // insert new profile 
@@ -202,27 +197,75 @@ namespace DatingProfileAPI.Controllers
 
 
         }
-
-
+        
         // PUT: api/Profile/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public Boolean UpdateProfile([FromBody] Profile profile)
         {
-        }
 
+            objDB = new DBConnect();
+            objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_sp_UpdateProfile";
+
+
+            objCommand.Parameters.AddWithValue("@UserID", profile.UserID); // need a int value 
+
+
+            objCommand.Parameters.AddWithValue("@UserImage", profile.UserImage);
+
+            objCommand.Parameters.AddWithValue("@FirstName", profile.FirstName);
+            objCommand.Parameters.AddWithValue("@LastName", profile.LastName);
+
+            objCommand.Parameters.AddWithValue("@StreetAddress", profile.StreetAddress);
+            objCommand.Parameters.AddWithValue("@StreetAddressLn2", profile.StreetAddressLn2);
+            objCommand.Parameters.AddWithValue("@City", profile.City);
+            objCommand.Parameters.AddWithValue("@State", profile.State);
+            objCommand.Parameters.AddWithValue("@ZipCode", profile.ZipCode);
+
+            objCommand.Parameters.AddWithValue("@Age", profile.Age);
+
+            objCommand.Parameters.AddWithValue("@Height", profile.Height);
+            objCommand.Parameters.AddWithValue("@Weight", profile.Weight);
+
+            objCommand.Parameters.AddWithValue("@Ocupation", profile.Ocupation);
+            objCommand.Parameters.AddWithValue("@Interest", profile.Interest);
+            objCommand.Parameters.AddWithValue("@LikesDislikes", profile.LikesDislikes);
+            objCommand.Parameters.AddWithValue("@Favorites", profile.Favorites);
+            objCommand.Parameters.AddWithValue("@Goals", profile.Goals);
+            objCommand.Parameters.AddWithValue("@Commitment", profile.Commitment);
+            objCommand.Parameters.AddWithValue("@Kids", profile.Kids);
+            objCommand.Parameters.AddWithValue("@WantKids", profile.WantKids);
+            objCommand.Parameters.AddWithValue("@Religion", profile.Religion);
+
+            int result = objDB.DoUpdateUsingCmdObj(objCommand);
+
+            if (result > 0)
+            {
+
+                return true;
+
+            }
+
+            return false;
+
+        }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public Boolean Delete(int id) //delete profiles
         {
 
-            DBConnect objDB = new DBConnect();
-
             int result = 0;
+            objDB = new DBConnect();
+            objCommand = new SqlCommand();
+            
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_sp_DeleteProfile";
+            objCommand.Parameters.AddWithValue("@UserID", id); // need a int value 
 
-            string strSQL = "DELETE FROM TP_Profiles Where ProfileID = '" + id.ToString() + "'";
-
-            result = objDB.DoUpdate(strSQL);
+            result = objDB.DoUpdateUsingCmdObj(objCommand);
 
             if (result > 0)
             {

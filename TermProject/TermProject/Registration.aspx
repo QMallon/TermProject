@@ -3,10 +3,44 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+       <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        
+          
+          <li class="active"><asp:HyperLink runat="server" NavigateUrl="SearchPage.aspx" Text="Main"></asp:HyperLink></li>
+          <li ><asp:HyperLink runat="server" NavigateUrl="ProfileView.aspx" Text="Profile"></asp:HyperLink></li>
+          <li ><asp:HyperLink runat="server" NavigateUrl="Default.aspx" Text="Matches"></asp:HyperLink></li>
+          <li ><asp:HyperLink runat="server" NavigateUrl="Default.aspx" Text="Messages"></asp:HyperLink></li>
+          
+      
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+   
+        <li><asp:HyperLink runat="server" NavigateUrl="Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Login </asp:HyperLink></li>
+      
+      </ul>
+    </div>
+  </div>
+</nav>
 
+    <div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+    </div>
 
-
-    <div runat="server" id="divNewUser"> <!-----------New User-------------->
+    <div class="col-sm-8 text-left"> 
+        <form runat="server">
+         <div runat="server" id="divNewUser"> <!-----------New User-------------->
 
 
         <!-- Material form register -->
@@ -150,5 +184,17 @@
 <!-- Material form register -->
 
         </div>
+            </form>
+    </div>
+
+    <div class="col-sm-2 sidenav">
+    </div>
+  </div>
+</div>
+    
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
 
 </asp:Content>

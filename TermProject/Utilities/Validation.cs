@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 
 namespace Utilities
 {
@@ -111,7 +111,114 @@ namespace Utilities
 
             }
         } // validate email address
-        
+
+            public int IfIntNullDef(String s, int i) {
+            
+                int val = 200;
+
+            if (s == null)
+            {
+                if (i == 0)
+                {
+
+                    return 0;
+
+                }
+                else {
+
+                    return 200;
+
+                }
+
+            }
+            else {
+                
+                if (int.TryParse(s, out val))
+                {
+
+                    return val;
+
+                }else {
+
+                    if (i == 0)
+                    {
+
+                        return 0;
+
+                    }
+                    else
+                    {
+
+                        return 200;
+
+                    }
+                }
+                
+                
+                
+            }
+
+
+
+            } // take two imputs the string to check if is null and the value who is going to determine as min = 0 or max any integer >= 0 
+
+            public decimal IfDecNullDef(String s, int i)
+        {
+
+            decimal val = 0;
+
+            if (s == null)
+            {
+                if (i == 0)
+                {
+
+                    return 0;
+
+                }
+                else
+                {
+
+                    return 400;
+
+                }
+
+            }
+            else
+            {
+
+                if (decimal.TryParse(s, out val))
+                {
+
+                    return val;
+
+                }
+                else
+                {
+
+                    if (i == 0)
+                    {
+
+                        return 0;
+
+                    }
+                    else
+                    {
+
+                        return 200;
+
+                    }
+                }
+
+
+
+            }
+
+
+
+        } // take two imputs the string to check if is null and the value who is going to determine as min = 0 or max any decimal >= 0 
+
+            
+            
     }
 
 

@@ -110,7 +110,11 @@ namespace Utilities
                 theCommandObject.Connection.Close();
                 return ret;
             }
-            catch (Exception ex)
+            catch (Exception 
+            
+            
+            
+            ex)
             {
                 return -1;
             }

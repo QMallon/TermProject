@@ -13,31 +13,13 @@ namespace TermProject {
     public partial class WebForm5 {
         
         /// <summary>
-        /// divSearchFilter control.
+        /// divSrcName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSearchFilter;
-        
-        /// <summary>
-        /// lblSearchByUsername control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchByUsername;
-        
-        /// <summary>
-        /// txtSrchUsername control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSrchUsername;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSrcName;
         
         /// <summary>
         /// lblSearchName control.
@@ -58,6 +40,33 @@ namespace TermProject {
         protected global::System.Web.UI.WebControls.TextBox txtSrcName;
         
         /// <summary>
+        /// btnSrcName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSrcName;
+        
+        /// <summary>
+        /// divSearchFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSearchFilter;
+        
+        /// <summary>
+        /// divSrcLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSrcLocation;
+        
+        /// <summary>
         /// lblSearchByCity control.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,13 @@ namespace TermProject {
         protected global::System.Web.UI.WebControls.TextBox txtSrcCity;
         
         /// <summary>
-        /// lblSeachByState control.
+        /// lblSearchByState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSeachByState;
+        protected global::System.Web.UI.WebControls.Label lblSearchByState;
         
         /// <summary>
         /// ddlSearchState control.
@@ -92,6 +101,24 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSearchState;
+        
+        /// <summary>
+        /// btnFindByLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFindByLocation;
+        
+        /// <summary>
+        /// divSrcByAge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSrcByAge;
         
         /// <summary>
         /// lblSearhByAge control.
@@ -139,6 +166,24 @@ namespace TermProject {
         protected global::System.Web.UI.WebControls.TextBox txtMaxAge;
         
         /// <summary>
+        /// btnSrcByAge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSrcByAge;
+        
+        /// <summary>
+        /// divSearchByOptions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSearchByOptions;
+        
+        /// <summary>
         /// lblSearchByCommitment control.
         /// </summary>
         /// <remarks>
@@ -148,220 +193,13 @@ namespace TermProject {
         protected global::System.Web.UI.WebControls.Label lblSearchByCommitment;
         
         /// <summary>
-        /// cbCommintmentUnsure control.
+        /// rbCommintment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbCommintmentUnsure;
-        
-        /// <summary>
-        /// cbCommintmentFriends control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbCommintmentFriends;
-        
-        /// <summary>
-        /// cbCommintmentRelationship control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbCommintmentRelationship;
-        
-        /// <summary>
-        /// cbCommintmentMarriage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbCommintmentMarriage;
-        
-        /// <summary>
-        /// lblSearchByWeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchByWeight;
-        
-        /// <summary>
-        /// lblMinWeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMinWeight;
-        
-        /// <summary>
-        /// txtMinWeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMinWeight;
-        
-        /// <summary>
-        /// lblMaxWeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMaxWeight;
-        
-        /// <summary>
-        /// txtMaxWeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMaxWeight;
-        
-        /// <summary>
-        /// lblSearchByHeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchByHeight;
-        
-        /// <summary>
-        /// lblMinHeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMinHeight;
-        
-        /// <summary>
-        /// txtMinHeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMinHeight;
-        
-        /// <summary>
-        /// lblMaxHeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMaxHeight;
-        
-        /// <summary>
-        /// txtMaxHeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMaxHeight;
-        
-        /// <summary>
-        /// lblSearchByReligion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSearchByReligion;
-        
-        /// <summary>
-        /// cbReligionNonReligious control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbReligionNonReligious;
-        
-        /// <summary>
-        /// cbReligionJudaism control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbReligionJudaism;
-        
-        /// <summary>
-        /// cbReligionIslam control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbReligionIslam;
-        
-        /// <summary>
-        /// cbReligionHinduism control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbReligionHinduism;
-        
-        /// <summary>
-        /// cbReligionChristianity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbReligionChristianity;
-        
-        /// <summary>
-        /// cbReligionChinesetraditionalreligion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbReligionChinesetraditionalreligion;
-        
-        /// <summary>
-        /// cbReligionBuddhism control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbReligionBuddhism;
-        
-        /// <summary>
-        /// cbReligionAtheist control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbReligionAtheist;
-        
-        /// <summary>
-        /// cbReligionAgnostic control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbReligionAgnostic;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbCommintment;
         
         /// <summary>
         /// lblSearchByKids control.
@@ -400,13 +238,49 @@ namespace TermProject {
         protected global::System.Web.UI.WebControls.RadioButtonList rbWantKids;
         
         /// <summary>
-        /// btnFind control.
+        /// btnSrcOptions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFind;
+        protected global::System.Web.UI.WebControls.Button btnSrcOptions;
+        
+        /// <summary>
+        /// divSrcByReligion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSrcByReligion;
+        
+        /// <summary>
+        /// lblSearchByReligion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSearchByReligion;
+        
+        /// <summary>
+        /// ddlReligion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlReligion;
+        
+        /// <summary>
+        /// btnFindByReligion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnFindByReligion;
         
         /// <summary>
         /// rpProfiles control.
