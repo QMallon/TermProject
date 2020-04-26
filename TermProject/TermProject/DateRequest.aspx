@@ -5,7 +5,19 @@
     <div class="container">
         <div class="row">
             <h1>Date Request</h1>
-
-            </div>          
+            
+            </div> 
+        <div class="row">
+            <div class="col-lg-4">
+                 <h1>Planned Dates</h1>
+                
+            <asp:GridView ID="gvPlannedDates" class="" runat="server"></asp:GridView>
+            </div>
+           <div class="col-lg-4">
+                 <h1>Pending Dates</h1>
+            <asp:GridView ID="gvPendingDates" class="" runat="server"></asp:GridView>
+            </div>
+            
+            </div>    
     </div>
 </asp:Content>
