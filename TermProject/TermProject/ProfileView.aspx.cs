@@ -31,6 +31,7 @@ namespace TermProject
 
             objCommand.Parameters.AddWithValue("@UserId", ID);
             DataSet ProfileID = objDB.GetDataSetUsingCmdObj(objCommand);
+            
             int profileID = Convert.ToInt32(ProfileID.Tables[0].Rows[0][0].ToString());
 
 
@@ -66,12 +67,20 @@ namespace TermProject
             Profile currentProfile = js.Deserialize<Profile>(data);
             
             string Name = currentProfile.FirstName + " " + currentProfile.LastName;
-            string personalInfo = "Age: " + currentProfile.Age + "\nWeight:  " +
-                currentProfile.Weight + "\nHeight: " + currentProfile.Height + "\nLocation: " + currentProfile.City;
-            string values = "Occupation: " + currentProfile.Ocupation + "\nReligion: "+ currentProfile.Religion+ "\nCommitment: " + currentProfile.Commitment + "\nKids: " + currentProfile.Kids
-                +"\nWant Kids: " + currentProfile.WantKids;
+
+
+
+            string personalInfo = getProfilePI(currentProfile);
+
+
+
+            string values = getProfileValues(currentProfile);
+
             string interests = currentProfile.Interest;
+
             string likes_Dislikes = currentProfile.LikesDislikes;
+
+
             string Favorites = currentProfile.Favorites;
 
             //imgProfilePicture.ImageUrl = currentProfile.UserImage;
@@ -179,6 +188,65 @@ namespace TermProject
             objCommand.Parameters.AddWithValue("@Pass", Store);
             objDB.DoUpdateUsingCmdObj(objCommand);
         }
+
+        private string getProfilePI(Profile x)
+        {
+            string PI = "";
+            if (x.Age != 0)             
+            {
+                PI += "Age: " + x.Age;
+            }
+            if(x.Weight != 0)
+            {
+                PI += "\r\nWeight:  " + x.Weight;
+            }
+            if(x.Height != 0)
+            {
+                PI += "\r\nHeight: " + x.Height;
+            }
+            if(x.City != "")
+            {
+                PI += "\r\nLocation: " + x.City;
+            }
+
+
+
+
+            return PI;
+        }
+        private string getProfileValues(Profile x)
+        {
+            string PV = "";
+            if(x.Ocupation != "")
+            {
+                PV += "Occupation: " + x.Ocupation;
+            }
+            if(x.Religion != "")
+            {
+                PV += "\r\nReligion: " + x.Religion;
+            }
+            if(x.Commitment != "")
+            {
+                PV += "\r\nCommitment: " + x.Commitment;
+            }
+            if(x.Kids != "")
+            {
+                PV += "\nKids: " + x.Kids;
+            }
+            if(x.WantKids != "")
+            {
+                PV += "\nWant Kids: " + x.WantKids;
+            }
+
+
+
+
+
+
+            return PV;
+        }
+
+        
     }
     
 }
