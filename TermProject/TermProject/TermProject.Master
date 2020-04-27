@@ -63,8 +63,9 @@
           
           <li ><asp:HyperLink runat="server" NavigateUrl="SearchPage.aspx" Text="Main"></asp:HyperLink></li>
           <li ><asp:HyperLink runat="server" NavigateUrl="ProfileView.aspx" Text="Profile"></asp:HyperLink></li>
-          <li ><asp:HyperLink runat="server" NavigateUrl="Default.aspx" Text="Matches"></asp:HyperLink></li>
-          <li ><asp:HyperLink runat="server" NavigateUrl="Default.aspx" Text="Messages"></asp:HyperLink></li>
+          <li ><asp:HyperLink runat="server" NavigateUrl="Like_Pass.aspx" Text="Matches"></asp:HyperLink></li>
+          <li ><asp:HyperLink runat="server" NavigateUrl="Messages.aspx" Text="Messages"></asp:HyperLink></li>
+          <li ><asp:HyperLink runat="server" NavigateUrl="DateRequest.aspx" Text="Dates"></asp:HyperLink></li>
           
       
       </ul>
