@@ -17,6 +17,7 @@ namespace TermProject
     public partial class WebForm6 : System.Web.UI.Page
     {
         DBConnect objDB = new DBConnect();
+        LikePassFunctions Function = new LikePassFunctions();
         List<Profile> Likes = new List<Profile>();
         List<Profile> Passes = new List<Profile>();
         protected void Page_Load(object sender, EventArgs e)
@@ -54,30 +55,10 @@ namespace TermProject
         private List<Profile> getLikedProfiles()
         {
             List<Profile> LikedProfiles = new List<Profile>();
-            //Add current profile to like
-            SqlCommand objCommand = new SqlCommand();
-            //objCommand  = new SqlCommand();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_getLikes";
-
-            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
-
-            objDB.GetDataSetUsingCmdObj(objCommand);
+            
 
 
-
-            Byte[] byteArray = (Byte[])objDB.GetField("Likes", 0);
-
-
-
-            BinaryFormatter deSerializer = new BinaryFormatter();
-
-            MemoryStream memStream = new MemoryStream(byteArray);
-
-
-
-            List<int> likeList = (List<int>)deSerializer.Deserialize(memStream);
+            List<int> likeList = Function.getLikes(Convert.ToInt32(Session["UserID"].ToString()));
 
             foreach (int x in likeList)
             {
@@ -109,30 +90,10 @@ namespace TermProject
         private List<Profile> getPassedProfiles()
         {
             List<Profile> passedProfiles = new List<Profile>();
-            //Add current profile to dislike
-            SqlCommand objCommand = new SqlCommand();
-            //objCommand  = new SqlCommand();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_GetPass";
-
-            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
-
-            objDB.GetDataSetUsingCmdObj(objCommand);
+            
 
 
-
-            Byte[] byteArray = (Byte[])objDB.GetField("Passes", 0);
-
-
-
-            BinaryFormatter deSerializer = new BinaryFormatter();
-
-            MemoryStream memStream = new MemoryStream(byteArray);
-
-
-
-            List<int> passList = (List<int>)deSerializer.Deserialize(memStream);
+            List<int> passList = Function.getPasses(Convert.ToInt32(Session["UserID"].ToString()));
             foreach(int x in passList)
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://localhost:44345/api/profile/" + x);
