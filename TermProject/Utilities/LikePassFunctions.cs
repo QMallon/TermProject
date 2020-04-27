@@ -103,7 +103,15 @@ namespace Utilities
 
 
 
-            List<int> passList = (List<int>)deSerializer.Deserialize(memStream);
+            List<int> passList;
+            try
+            {
+                passList = (List<int>)deSerializer.Deserialize(memStream);
+            }
+            catch
+            {
+                passList = new List<int>();
+            }
 
             passList.Add(addID);
 
