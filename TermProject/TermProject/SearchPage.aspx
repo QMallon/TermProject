@@ -226,12 +226,13 @@
 
 <!-----------/Modal-------------->
     <br>
+            <asp:Label ID="lblTest" runat="server" Text="Label"></asp:Label>
     <hr>
     <br>
 
     <div class="row">
 
-        <asp:Repeater ID="rpProfiles" runat="server">
+        <asp:Repeater ID="rpProfiles" runat="server" OnItemCommand="rpProfiles_ItemCommand">
 
                <ItemTemplate>
                
@@ -245,9 +246,9 @@
                             
                                 <asp:Label ID="lblFirstName" class="" runat="server" style="text-align:center;font-weight:bold; font-size:20px" Text='<%#Eval("Firstname")%>'></asp:Label>
                                 <br>
-
+                                    
                                 <asp:Label ID="lblCity" runat="server" Text='<%#Eval("City")%>'></asp:Label>
-                            
+                            <asp:HiddenField ID="ProfileID" runat="server" Value='<%# Eval("ProfileId") %>' />
                                 </div>
                             
                                <div class="card-body" style="text-align: center">
@@ -258,9 +259,11 @@
                             
                                 <div class="card-footer" style="text-align: center">
                             
-                                <asp:Button class="btn btn-success" ID="btnRptLike" runat="server" Text="Like" />
+                                <asp:Button class="btn btn-success"  UseSubmitBehavior="false" ID="btnRptLike" runat="server" Text="Like" CommandName="Like" />
                                 
-                                <asp:Button class="btn btn-danger" ID="btnRptDislike" runat="server" Text="Not Like" />
+                                <asp:Button class="btn btn-danger" UseSubmitBehavior="false" ID="btnRptDislike" runat="server" Text="Not Like" CommandName="Pass" />
+
+                                <asp:Button class="btn btn-info" UseSubmitBehavior="false" ID="btnRptViewProfile" runat="server" Text="View Profile" CommandName="ViewProfile" />
                                 
                                 <br>
                                 

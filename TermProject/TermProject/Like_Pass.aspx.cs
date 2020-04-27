@@ -21,15 +21,21 @@ namespace TermProject
         List<Profile> Passes = new List<Profile>();
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                Likes = getLikedProfiles();
+                Passes = getPassedProfiles();
 
-            Likes = getLikedProfiles();
-            Passes = getPassedProfiles();
+                gvLikes.DataSource = Likes;
+                gvLikes.DataBind();
 
-            gvLikes.DataSource = Likes;
-            gvLikes.DataBind();
-
-            gvDislikes.DataSource = Passes;
-            gvDislikes.DataBind();
+                gvDislikes.DataSource = Passes;
+                gvDislikes.DataBind();
+            }
+            catch
+            {
+                //NoUserID / error
+            }
 
 
         }

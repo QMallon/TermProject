@@ -16,15 +16,18 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <form runat="server">
-       
+
         <div id="divProfile" runat="server">
     
         <div class="container">
+
+    <form runat="server">
+    <div class="container">
+
        
-        <div class ="row">
+        <div class ="row ">
             <h1>
-               <asp:Label ID="lblName" runat="server" Text="Label"></asp:Label>
+               <asp:Label ID="lblName" runat="server" Text=""></asp:Label>
 
             </h1>
             <asp:Image ID="imgProfilePicture" runat="server" />
@@ -34,14 +37,14 @@
             
         </div>
         <div class="row" style="white-space:pre-wrap;" runat="server" id="PersonalInfo">
-            <asp:Label class="" ID="lblPersonalInfo" runat="server" Text="Label"></asp:Label>
+            <asp:Label class="" ID="lblPersonalInfo" runat="server" Text=""></asp:Label>
         </div>
         <div class ="row">
             <h2>Values</h2>
             
         </div>
         <div class="row" style="white-space:pre-wrap;">
-            <asp:Label ID="lblValues" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblValues" runat="server" Text=""></asp:Label>
         </div>
 
         <div class ="row">
@@ -49,7 +52,7 @@
             
         </div>
         <div class="row" style="white-space:pre-wrap;">
-            <asp:Label ID="lblInterests" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblInterests" runat="server" Text=""></asp:Label>
         </div>
 
         
@@ -58,7 +61,7 @@
             
         </div>
         <div class="row" style="white-space:pre-wrap;">
-            <asp:Label ID="lblLikes" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblLikes" runat="server" Text=""></asp:Label>
         </div>
         
         <div class ="row">
@@ -67,7 +70,7 @@
 
     </div>
         <div class="row">
-            <asp:Label ID="lblFavorites" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblFavorites" runat="server" Text=""></asp:Label>
         </div>
         <div class ="row">
            <asp:Button class="btn-primary" ID="btnLike" runat="server" Text="Like" OnClick="btnLike_Click" /><asp:Button class="btn-danger" ID="btnPass" runat="server" Text="Pass" OnClick="btnPass_Click" />
