@@ -314,6 +314,53 @@ namespace TermProject
             
 
         }
+
+        protected void btnBlock_click(object sender, EventArgs e)
+        {
+            //Add current profile to block
+            SqlCommand objCommand = new SqlCommand();
+            //objCommand  = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetBlocks";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+
+            objDB.GetDataSetUsingCmdObj(objCommand);
+
+
+
+            Byte[] byteArray = (Byte[])objDB.GetField("BlockList", 0);
+
+
+
+            BinaryFormatter deSerializer = new BinaryFormatter();
+
+            MemoryStream memStream = new MemoryStream(byteArray);
+
+
+
+            List<int> BlockList = (List<int>)deSerializer.Deserialize(memStream);
+
+            BlockList.Add(Convert.ToInt32(Session["CurrentUserID"]));
+
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            MemoryStream stream = new MemoryStream();
+
+            Byte[] Store;
+
+            serializer.Serialize(stream, BlockList);
+
+            Store = memStream.ToArray();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_StoreBlocks";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+            objCommand.Parameters.AddWithValue("@BlockList", Store);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
     }
     
 }
