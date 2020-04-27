@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TermProject {
-    
-    
-    public partial class WebForm4 {
-        
+namespace TermProject
+{
+
+
+    public partial class WebForm4
+    {
+
         /// <summary>
         /// divProfile control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divProfile;
-        
+
         /// <summary>
         /// lblName control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblName;
-        
+
         /// <summary>
         /// imgProfilePicture control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgProfilePicture;
-        
+
         /// <summary>
         /// PersonalInfo control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl PersonalInfo;
-        
+
         /// <summary>
         /// lblPersonalInfo control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPersonalInfo;
-        
+
         /// <summary>
         /// lblValues control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblValues;
-        
+
         /// <summary>
         /// lblInterests control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblInterests;
-        
+
         /// <summary>
         /// lblLikes control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLikes;
-        
+
         /// <summary>
         /// lblFavorites control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFavorites;
-        
+
         /// <summary>
         /// btnLike control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLike;
-        
+
         /// <summary>
         /// btnPass control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPass;
-        
+
         /// <summary>
         /// btnBlock control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnBlock;
-        
+
         /// <summary>
         /// btnMessage control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMessage;
-        
+
         /// <summary>
         /// btnDateRequest control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDateRequest;
-        
+
         /// <summary>
         /// pnlDateRequest control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlDateRequest;
-        
+
         /// <summary>
         /// txtLocation control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLocation;
-        
+
         /// <summary>
         /// txtDescription control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
-        
+
         /// <summary>
         /// txtDate control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDate;
-        
+
         /// <summary>
         /// btnDateSubmit control.
         /// </summary>

@@ -16,12 +16,12 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <form runat="server">
         <div id="divProfile" runat="server">
     
         <div class="container">
 
-    <form runat="server">
+    
     <div class="container">
 
        
@@ -106,6 +106,7 @@
 
     </asp:Panel>
 </div>
+            </div>
     </form>
     
 </asp:Content>

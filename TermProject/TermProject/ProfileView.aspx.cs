@@ -18,7 +18,7 @@ namespace TermProject
     public partial class WebForm4 : System.Web.UI.Page
     {
         DBConnect objDB = new DBConnect();
-
+        LikePassFunctions Function = new LikePassFunctions();
         Profile currentProfile;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -125,98 +125,14 @@ namespace TermProject
         
         protected void btnLike_Click(object sender, EventArgs e)
         {
-            //Add current profile to like
-            SqlCommand objCommand = new SqlCommand();
-            //objCommand  = new SqlCommand();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_getLikes";
-
-            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
-
-            objDB.GetDataSetUsingCmdObj(objCommand);
-
-
-
-            Byte[] byteArray = (Byte[])objDB.GetField("Likes", 0);
-
-
-
-            BinaryFormatter deSerializer = new BinaryFormatter();
-
-            MemoryStream memStream = new MemoryStream(byteArray);
-
-
-
-            List<int> likeList = (List<int>)deSerializer.Deserialize(memStream);
-
-            likeList.Add(Convert.ToInt32(Session["CurrentUserID"]));
-
-            BinaryFormatter serializer = new BinaryFormatter();
-
-            MemoryStream stream = new MemoryStream();
-
-            Byte[] Store;
-
-            serializer.Serialize(stream, likeList);
-
-            Store = memStream.ToArray();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_StoreLikes";
-
-            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
-            objCommand.Parameters.AddWithValue("@Likes", Store);
-            objDB.DoUpdateUsingCmdObj(objCommand);
+            Function.updateLikes(Convert.ToInt32(Session["UserID"].ToString()), currentProfile.ProfileID);
 
 
         }
 
         protected void btnPass_Click(object sender, EventArgs e)
         {
-            //Add current profile to dislike
-            SqlCommand objCommand = new SqlCommand();
-            //objCommand  = new SqlCommand();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_GetPass";
-
-            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
-
-            objDB.GetDataSetUsingCmdObj(objCommand);
-
-
-
-            Byte[] byteArray = (Byte[])objDB.GetField("Passes", 0);
-
-
-
-            BinaryFormatter deSerializer = new BinaryFormatter();
-
-            MemoryStream memStream = new MemoryStream(byteArray);
-
-
-
-            List<int> passList = (List<int>)deSerializer.Deserialize(memStream);
-
-            passList.Add(Convert.ToInt32(Session["CurrentUserID"]));
-
-            BinaryFormatter serializer = new BinaryFormatter();
-
-            MemoryStream stream = new MemoryStream();
-
-            Byte[] Store;
-
-            serializer.Serialize(stream, passList);
-
-            Store = memStream.ToArray();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_StorePass";
-
-            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
-            objCommand.Parameters.AddWithValue("@Pass", Store);
-            objDB.DoUpdateUsingCmdObj(objCommand);
+            Function.updatePass(Convert.ToInt32(Session["UserID"].ToString()), currentProfile.ProfileID);
         }
 
         private string getProfilePI(Profile x)
