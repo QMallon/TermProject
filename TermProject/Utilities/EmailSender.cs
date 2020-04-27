@@ -18,35 +18,42 @@ namespace Utilities
 
         public Boolean SendEmail(String toAddress, String fromAddress, String EmailBody, String EmailSubject) {
             
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.Credentials = new System.Net.NetworkCredential("match564586@gmail.com", "@Green1993");
-            smtp.EnableSsl = true;
-
-            MailMessage emailMsg = new MailMessage();
-            emailMsg.Subject = EmailSubject;
-            emailMsg.Body = EmailBody;
-            emailMsg.To.Add(toAddress);
-            emailMsg.From = new MailAddress(fromAddress);
+        string smtpAddress = "smtp.gmail.com";
+        int portNumber = 587;
+        bool enableSSL = true;
+         string emailFromAddress = "match564586@gmail.com"; 
+         string password = "@Green1993"; 
+         string emailToAddress = toAddress;   
+         string subject = EmailSubject;
+         string body = EmailBody;
 
             try
             {
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress(emailFromAddress);
+                    mail.To.Add(emailToAddress);
+                    mail.Subject = subject;
+                    mail.Body = body;
 
-                smtp.Send(emailMsg);
-                return true;
+                    using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
+                    {
 
+                        smtp.Credentials = new NetworkCredential(emailFromAddress, password);
+                        smtp.EnableSsl = enableSSL;
+                        smtp.Send(mail);
+                        return true;
+                    }
+                }
             }
-            catch
-            {
+            catch {
+
 
                 return false;
-                throw;
-               
-            }
 
+            }        
+    }
 
-        }
 
 
     }

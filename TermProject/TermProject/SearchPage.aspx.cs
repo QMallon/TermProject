@@ -21,6 +21,8 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             WebRequest request = WebRequest.Create("https://localhost:44345/api/profile"); //webrequest for the api localhost
 
             WebResponse response = request.GetResponse();

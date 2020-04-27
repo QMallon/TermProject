@@ -1,12 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TermProject.Master" AutoEventWireup="true" CodeBehind="ProfileView.aspx.cs" Inherits="TermProject.WebForm4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+    <style>
+        h2 {
+        
+            text-align:center;
+            font-weight:bold;
+        
+        
+        }
+            
+            
+            
+     </style>
 
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    <form runat="server">
-    <div class="container">
+       
+        <div id="divProfile" runat="server">
+    
+        <div class="container">
        
         <div class ="row">
             <h1>
@@ -83,11 +97,12 @@
         
 
 
-
+        
 
 
 
     </asp:Panel>
-
+</div>
     </form>
+    
 </asp:Content>
