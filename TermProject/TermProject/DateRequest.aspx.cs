@@ -29,7 +29,7 @@ namespace TermProject
             objCommand.CommandType = CommandType.StoredProcedure;
             //Login
             objCommand.CommandText = "TP_GetCDates";
-            SqlParameter ID = new SqlParameter("@UserId", Session["UserId"]);
+            SqlParameter ID = new SqlParameter("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
             objCommand.Parameters.Add(ID);
             DataSet confirmedDates = objDB.GetDataSetUsingCmdObj(objCommand);
 
@@ -42,11 +42,32 @@ namespace TermProject
             objCommand.CommandType = CommandType.StoredProcedure;
             //Login
             objCommand.CommandText = "TP_GetPDates";
-            SqlParameter ID = new SqlParameter("@UserId", Session["UserId"]);
+            SqlParameter ID = new SqlParameter("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
             objCommand.Parameters.Add(ID);
             DataSet potentialDates = objDB.GetDataSetUsingCmdObj(objCommand);
 
             return potentialDates;
+        }
+
+        protected void btnApprove_Click(object sender, EventArgs e)
+        {
+            SqlCommand objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            //Login
+            objCommand.CommandText = "TP_ConfirmDate";
+            objCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+            objCommand.Parameters.AddWithValue("@PassConfirm", 1);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
+        protected void btnPass_Click(object sender, EventArgs e)
+        {
+            SqlCommand objCommand = new SqlCommand();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            //Login
+            objCommand.CommandText = "TP_ConfirmDate";
+            objCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
+            objCommand.Parameters.AddWithValue("@PassConfirm", 2);
+            objDB.DoUpdateUsingCmdObj(objCommand);
         }
     }
 }

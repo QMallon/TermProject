@@ -18,7 +18,7 @@ namespace TermProject
     public partial class WebForm4 : System.Web.UI.Page
     {
         DBConnect objDB = new DBConnect();
-
+        Profile currentProfile;
         protected void Page_Load(object sender, EventArgs e)
         {
             //string Username = Session["Username"].ToString();
