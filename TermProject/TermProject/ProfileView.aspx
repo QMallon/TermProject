@@ -3,7 +3,9 @@
     
 
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <form runat="server">
     <div class="container">
        
         <div class ="row">
@@ -54,7 +56,8 @@
             <asp:Label ID="lblFavorites" runat="server" Text="Label"></asp:Label>
         </div>
         <div class ="row">
-            <asp:Button class="btn-primary" ID="btnLike" runat="server" Text="Like" OnClick="btnLike_Click" /><asp:Button class="btn-danger" ID="btnPass" runat="server" Text="Pass" OnClick="btnPass_Click" />
+           <asp:Button class="btn-primary" ID="btnLike" runat="server" Text="Like" OnClick="btnLike_Click" /><asp:Button class="btn-danger" ID="btnPass" runat="server" Text="Pass" OnClick="btnPass_Click" />
+            <asp:Button class="btn-danger" ID="btnBlock" runat="server" Text="Block" OnClick="btnBlock_click" />
         </div>
         <div class="row">
         <asp:Button class="btn-primary" ID="btnMessage" runat="server" Text="Message" />
@@ -85,6 +88,6 @@
 
 
     </asp:Panel>
-</div>
 
+    </form>
 </asp:Content>

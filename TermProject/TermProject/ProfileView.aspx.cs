@@ -18,31 +18,39 @@ namespace TermProject
     public partial class WebForm4 : System.Web.UI.Page
     {
         DBConnect objDB = new DBConnect();
-        Profile currentProfile = new Profile();
+
+        Profile currentProfile;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             //string Username = Session["Username"].ToString();
-
-            SqlCommand objCommand = new SqlCommand();
-            objDB = new DBConnect();
-            objCommand = new SqlCommand();
-
-            int ID = Convert.ToInt32(Session["CurrentUserID"]);
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_GetProfileByUserID";
-
-            objCommand.Parameters.AddWithValue("@UserId", ID);
-            DataSet ProfileID = objDB.GetDataSetUsingCmdObj(objCommand);
-
-            int profileID = Convert.ToInt32(ProfileID.Tables[0].Rows[0][0].ToString());
+            try
+            {
+                SqlCommand objCommand = new SqlCommand();
+                objDB = new DBConnect();
+                objCommand = new SqlCommand();
+                int ID = Convert.ToInt32(Session["CurrentUserID"]);
 
 
-            //int ID = 0 ;
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_GetProfileByUserID";
 
 
-            viewProfilenonUser(profileID);
+                objCommand.Parameters.AddWithValue("@UserId", ID);
+                DataSet ProfileID = objDB.GetDataSetUsingCmdObj(objCommand);
+
+                int profileID = Convert.ToInt32(ProfileID.Tables[0].Rows[0][0].ToString());
+
+
+                //int ID = 0 ;
+
+
+                viewProfilenonUser(profileID);
+            }
+            catch
+            {
+                lblName.Text = "Error loading Profile";
+            }
 
 
         }
@@ -315,6 +323,53 @@ namespace TermProject
             }
             
 
+        }
+
+        protected void btnBlock_click(object sender, EventArgs e)
+        {
+            //Add current profile to block
+            SqlCommand objCommand = new SqlCommand();
+            //objCommand  = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetBlocks";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+
+            objDB.GetDataSetUsingCmdObj(objCommand);
+
+
+
+            Byte[] byteArray = (Byte[])objDB.GetField("BlockList", 0);
+
+
+
+            BinaryFormatter deSerializer = new BinaryFormatter();
+
+            MemoryStream memStream = new MemoryStream(byteArray);
+
+
+
+            List<int> BlockList = (List<int>)deSerializer.Deserialize(memStream);
+
+            BlockList.Add(Convert.ToInt32(Session["CurrentUserID"]));
+
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            MemoryStream stream = new MemoryStream();
+
+            Byte[] Store;
+
+            serializer.Serialize(stream, BlockList);
+
+            Store = memStream.ToArray();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_StoreBlocks";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+            objCommand.Parameters.AddWithValue("@BlockList", Store);
+            objDB.DoUpdateUsingCmdObj(objCommand);
         }
     }
     
