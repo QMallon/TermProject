@@ -11,33 +11,38 @@ using System.Net; // Web Request
 using System.Data.SqlClient;
 using System.Drawing;
 using Utilities;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TermProject
 {
     public partial class WebForm5 : System.Web.UI.Page
     {
         Validation val = new Validation();
-        
+        DBConnect objDB = new DBConnect();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            WebRequest request = WebRequest.Create("https://localhost:44345/api/profile"); //webrequest for the api localhost
+            if (!IsPostBack)
+            {
+                WebRequest request = WebRequest.Create("https://localhost:44345/api/profile"); //webrequest for the api localhost
 
-            WebResponse response = request.GetResponse();
+                WebResponse response = request.GetResponse();
 
-            Stream theDataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(theDataStream);
+                Stream theDataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(theDataStream);
 
-            String data = reader.ReadToEnd();
+                String data = reader.ReadToEnd();
 
-            reader.Close();
-            response.Close();
+                reader.Close();
+                response.Close();
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Profile[] profile = js.Deserialize<Profile[]>(data);
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Profile[] profile = js.Deserialize<Profile[]>(data);
 
-            rpProfiles.DataSource = profile;
-            rpProfiles.DataBind();
+                rpProfiles.DataSource = profile;
+                rpProfiles.DataBind();
+            }
+            
 
 
 
@@ -229,6 +234,126 @@ namespace TermProject
         }
 
         
+
+        protected void rpProfiles_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            int rowIndex = e.Item.ItemIndex;
+            int y = Convert.ToInt32((rpProfiles.Items[rowIndex].FindControl("ProfileID") as HiddenField).Value);
+            string x = e.CommandName;
+            if(x == "Like")
+            {
+                //lblTest.Text = "Like Happened";
+                likeProfile(y);
+            }
+            else if (x == "Pass")
+            {
+                //lblTest.Text = "Pass Happened";
+                PassProfile(y);
+            }
+            if (x == "ViewProfile")
+            {
+                Session["CurrentUserID"] = y;
+                Response.Redirect("ProfileView.aspx");
+                //lblTest.Text = "View Happened";
+            }
+
+            //lblTest.Text = x.ToString();
+        }
+
+
+        private void likeProfile(int ID)
+        {
+            //Add current profile to like
+            SqlCommand objCommand = new SqlCommand();
+            //objCommand  = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_getLikes";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+
+            objDB.GetDataSetUsingCmdObj(objCommand);
+
+
+
+            Byte[] byteArray = (Byte[])objDB.GetField("Likes", 0);
+
+
+
+            BinaryFormatter deSerializer = new BinaryFormatter();
+
+            MemoryStream memStream = new MemoryStream(byteArray);
+
+
+
+            List<int> likeList = (List<int>)deSerializer.Deserialize(memStream);
+
+            likeList.Add(Convert.ToInt32(Session["CurrentUserID"]));
+
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            MemoryStream stream = new MemoryStream();
+
+            Byte[] Store;
+
+            serializer.Serialize(stream, likeList);
+
+            Store = memStream.ToArray();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_StoreLikes";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+            objCommand.Parameters.AddWithValue("@Likes", Store);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
+        private void PassProfile(int ID)
+        {
+            //Add current profile to dislike
+            SqlCommand objCommand = new SqlCommand();
+            //objCommand  = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetPass";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+
+            objDB.GetDataSetUsingCmdObj(objCommand);
+
+
+
+            Byte[] byteArray = (Byte[])objDB.GetField("Passes", 0);
+
+
+
+            BinaryFormatter deSerializer = new BinaryFormatter();
+
+            MemoryStream memStream = new MemoryStream(byteArray);
+
+
+
+            List<int> passList = (List<int>)deSerializer.Deserialize(memStream);
+
+            passList.Add(Convert.ToInt32(Session["CurrentUserID"]));
+
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            MemoryStream stream = new MemoryStream();
+
+            Byte[] Store;
+
+            serializer.Serialize(stream, passList);
+
+            Store = memStream.ToArray();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_StorePass";
+
+            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+            objCommand.Parameters.AddWithValue("@Pass", Store);
+            objDB.DoUpdateUsingCmdObj(objCommand);
+        }
+
 
     }
 

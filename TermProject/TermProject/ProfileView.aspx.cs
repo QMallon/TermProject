@@ -29,23 +29,32 @@ namespace TermProject
                 SqlCommand objCommand = new SqlCommand();
                 objDB = new DBConnect();
                 objCommand = new SqlCommand();
-                int ID = Convert.ToInt32(Session["CurrentUserID"]);
+                
+                int ID = Convert.ToInt32(Session["CurrentUserID"].ToString());
+                if(Session["UserId"].ToString() == Session["CurrentUserID"].ToString())
+                {
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "TP_GetProfileByUserID";
 
 
-                objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "TP_GetProfileByUserID";
+                    objCommand.Parameters.AddWithValue("@UserId", ID);
+                    DataSet ProfileID = objDB.GetDataSetUsingCmdObj(objCommand);
 
+                    int profileID = Convert.ToInt32(ProfileID.Tables[0].Rows[0][0].ToString());
+                    viewProfilenonUser(profileID);
+                }
+                else
+                {
+                    viewProfilenonUser(ID);
+                }
 
-                objCommand.Parameters.AddWithValue("@UserId", ID);
-                DataSet ProfileID = objDB.GetDataSetUsingCmdObj(objCommand);
-
-                int profileID = Convert.ToInt32(ProfileID.Tables[0].Rows[0][0].ToString());
+               
 
 
                 //int ID = 0 ;
 
 
-                viewProfilenonUser(profileID);
+               
             }
             catch
             {
