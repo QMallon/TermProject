@@ -58,7 +58,10 @@ namespace TermProject
             }
             catch
             {
-                lblName.Text = "Error loading Profile";
+
+                divProfile.Visible = false;
+                Response.Write("<h2>Please login before try to opening your profile</h2>");
+                
             }
 
 
@@ -118,6 +121,8 @@ namespace TermProject
             lblValues.Text = values;
         }
 
+
+        
         protected void btnLike_Click(object sender, EventArgs e)
         {
             //Add current profile to like

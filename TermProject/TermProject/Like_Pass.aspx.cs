@@ -227,11 +227,11 @@ namespace TermProject
 
         protected void Button1_Click2(object sender, EventArgs e)
         {
+
             int selectedRow = ((GridViewRow)((Control)sender).NamingContainer).RowIndex;
             Session["CurrentUserId"] = selectedRow;
             Response.Redirect("ProfileView.aspx");
-
-
+            
         }
 
         protected void btnPass_Click(object sender, EventArgs e)
