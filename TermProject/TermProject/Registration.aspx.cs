@@ -9,6 +9,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 
+using System.Net.Mail;
+using System.Net;
+
 
 namespace TermProject
 {
@@ -18,20 +21,13 @@ namespace TermProject
         DBConnect objDB = new DBConnect();
         SqlCommand objCommand = new SqlCommand();
         int intSession = 0;
+        String code = "";
         Validation validate = new Validation();
-        
+        EmailSender email = new EmailSender();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string userID = Session["CurrentUserID"].ToString();
-
-            if (userID != null) {
-
-                divNewUser.Visible = false;
-
-                Response.Write("<H2>You are not required to create a new user");
-                
-            }
+    
 
 
 
@@ -95,9 +91,15 @@ namespace TermProject
                             {
 
                                 Session["Username"] = txtUsername.Text;
-                                Response.Redirect("/CreateProfile.aspx");
                                 lblStatus.ForeColor = Color.Green;
                                 lblStatus.Text = "Success: New user was created";
+
+                                if (EmailVerification(txtEmail.Text))
+                                { // get user ID and sen it to send the verification email
+
+                                    Response.Redirect("/CreateProfile.aspx");
+
+                                }
 
                             }
 
@@ -138,8 +140,59 @@ namespace TermProject
             }
 
         }
-        
 
+        public Boolean EmailVerification(string strEmail) {
+
+            int val = 0;
+            objDB = new DBConnect();
+            objCommand = new SqlCommand();
+
+            //----------Email verification -------------//
+            Random random = new Random();
+            code = random.Next(10001, 99999).ToString();
+
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_sp_UpdateEmailVerificationCode";
+
+            objCommand.Parameters.AddWithValue("@Email", strEmail);
+            objCommand.Parameters.AddWithValue("@ConfirmationCode", code);
+
+            val = objDB.DoUpdateUsingCmdObj(objCommand);
+
+            if (val > 0)
+            {
+
+                String msg = "This is your verification code: " + code;
+
+                if (email.SendEmail(txtEmail.Text, "match564586@gmail.com", msg, "Verification email"))
+                {
+
+                    lblStatus.Text = "Please check your email for your verification code.";
+                    return true;
+                }
+                else
+                {
+
+                    lblStatus.Text = "Problem sending the email.";
+                    return false;
+                }
+
+
+
+            }
+            else
+            {
+
+                lblStatus.Text = "Unable to add verification code.";
+                return false;
+
+            }
+            
+
+
+        }
+
+      
     }
 
         

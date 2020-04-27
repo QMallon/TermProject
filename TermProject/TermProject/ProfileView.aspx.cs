@@ -18,6 +18,7 @@ namespace TermProject
     public partial class WebForm4 : System.Web.UI.Page
     {
         DBConnect objDB = new DBConnect();
+        Profile currentProfile = new Profile();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +27,7 @@ namespace TermProject
             SqlCommand objCommand = new SqlCommand();
             objDB = new DBConnect();
             objCommand = new SqlCommand();
+
             int ID = Convert.ToInt32(Session["CurrentUserID"]);
 
             objCommand.CommandType = CommandType.StoredProcedure;
