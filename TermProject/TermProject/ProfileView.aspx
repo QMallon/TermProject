@@ -57,6 +57,7 @@
         </div>
         <div class ="row">
            <asp:Button class="btn-primary" ID="btnLike" runat="server" Text="Like" OnClick="btnLike_Click" /><asp:Button class="btn-danger" ID="btnPass" runat="server" Text="Pass" OnClick="btnPass_Click" />
+            <asp:Button class="btn-danger" ID="btnBlock" runat="server" Text="Block" OnClick="btnBlock_click" />
         </div>
         <div class="row">
         <asp:Button class="btn-primary" ID="btnMessage" runat="server" Text="Message" />
