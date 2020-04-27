@@ -216,26 +216,26 @@ namespace TermProject
                     SqlCommand objCommand = new SqlCommand();
                     objDB = new DBConnect();
                     objCommand = new SqlCommand();
-                    int ID1 = Convert.ToInt32(Session["UserID"]);
+                    int ID1 = Convert.ToInt32(Session["UserID"].ToString());
                     int ID2 = currentProfile.UserID;
 
                     objCommand.CommandType = CommandType.StoredProcedure;
                     objCommand.CommandText = "TP_CreateDate";
                     objCommand.Parameters.AddWithValue("@UserId1", ID1);
                     objCommand.Parameters.AddWithValue("@UserId2", ID2);
-                    objCommand.Parameters.AddWithValue("@Location", ID2);
-                    objCommand.Parameters.AddWithValue("@Date", ID2);
-                    objCommand.Parameters.AddWithValue("@Description", ID2);
+                    objCommand.Parameters.AddWithValue("@Location", location);
+                    objCommand.Parameters.AddWithValue("@Date", date);
+                    objCommand.Parameters.AddWithValue("@Description", desc);
                     objCommand.Parameters.AddWithValue("@UserName1", Session["UsersName"].ToString());
                     objCommand.Parameters.AddWithValue("@UserName2", currentProfile.FirstName);
                     objDB.DoUpdateUsingCmdObj(objCommand);
-
+                    
 
 
                 }
                 else
                 {
-                    MessageBox.Show("Cannot Date yourself Error");
+                   // MessageBox.Show("Cannot Date yourself Error");
                 }
 
 
@@ -248,7 +248,7 @@ namespace TermProject
             }
             catch
             {
-                MessageBox.Show("Date Request Error");
+                //MessageBox.Show("Date Request Error");
                 pnlDateRequest.Visible = false;
             }
             

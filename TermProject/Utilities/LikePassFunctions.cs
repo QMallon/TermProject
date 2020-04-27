@@ -69,7 +69,7 @@ namespace Utilities
             serializer.Serialize(stream, likeList);
 
             Store = memStream.ToArray();
-
+           objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.CommandText = "TP_StoreLikes";
 
@@ -124,7 +124,7 @@ namespace Utilities
             serializer.Serialize(stream, passList);
 
             Store = memStream.ToArray();
-
+            objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.CommandText = "TP_StorePass";
 
@@ -156,7 +156,15 @@ namespace Utilities
 
 
 
-            List<int> likeList = (List<int>)deSerializer.Deserialize(memStream);
+            List<int> likeList;
+            try
+            {
+                likeList = (List<int>)deSerializer.Deserialize(memStream);
+            }
+            catch
+            {
+                likeList = new List<int>();
+            }
             return likeList;
         }
 
@@ -185,7 +193,15 @@ namespace Utilities
 
 
 
-            List<int> passList = (List<int>)deSerializer.Deserialize(memStream);
+            List<int> passList;
+            try
+            {
+                passList = (List<int>)deSerializer.Deserialize(memStream);
+            }
+            catch
+            {
+                passList = new List<int>();
+            }
             return passList;
         }
     }
