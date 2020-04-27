@@ -21,7 +21,7 @@ namespace TermProject
         DBConnect objDB = new DBConnect();
         SqlCommand objCommand = new SqlCommand();
         int intSession = 0;
-        String code = "";
+        int code = 0;
         Validation validate = new Validation();
         EmailSender email = new EmailSender();
 
@@ -59,13 +59,16 @@ namespace TermProject
                             objDB = new DBConnect();
                             objCommand = new SqlCommand();
 
+                            Random random = new Random();
+                            code = random.Next(10001, 99999);
+
                             objCommand.CommandType = CommandType.StoredProcedure;
-                            objCommand.CommandText = "sp_addNewUser";
+                            objCommand.CommandText = "TP_sp_addNewUser";
 
                             objCommand.Parameters.AddWithValue("@username", txtUsername.Text);
                             objCommand.Parameters.AddWithValue("@password", txtPassword.Text);
                             objCommand.Parameters.AddWithValue("@email", txtEmail.Text);
-
+                            objCommand.Parameters.AddWithValue("@ConfirmationCode", code.ToString());
 
                             objCommand.Parameters.AddWithValue("@SecurityQuestion", ddlSecurityQuestion.SelectedValue);
                             objCommand.Parameters.AddWithValue("@SecurityResponse", txtSecurityResponse.Text);
@@ -142,32 +145,15 @@ namespace TermProject
         }
 
         public Boolean EmailVerification(string strEmail) {
-
-            int val = 0;
-            objDB = new DBConnect();
-            objCommand = new SqlCommand();
-
-            //----------Email verification -------------//
-            Random random = new Random();
-            code = random.Next(10001, 99999).ToString();
-
-            objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_sp_UpdateEmailVerificationCode";
-
-            objCommand.Parameters.AddWithValue("@Email", strEmail);
-            objCommand.Parameters.AddWithValue("@ConfirmationCode", code);
-
-            val = objDB.DoUpdateUsingCmdObj(objCommand);
-
-            if (val > 0)
-            {
+            
 
                 String msg = "This is your verification code: " + code;
 
-                if (email.SendEmail(txtEmail.Text, "match564586@gmail.com", msg, "Verification email"))
+            //if (email.SendEmail(txtEmail.Text, "match564586@gmail.com", msg, "Verification email")) <---- not able to send the email for the verification process 
+            if(true)
                 {
 
-                    lblStatus.Text = "Please check your email for your verification code.";
+                    lblStatus.Text = "Please check your email for your verification code. Your code: " + code;
                     return true;
                 }
                 else
@@ -180,20 +166,14 @@ namespace TermProject
 
 
             }
-            else
-            {
-
-                lblStatus.Text = "Unable to add verification code.";
-                return false;
-
-            }
+          
             
 
 
         }
 
       
-    }
+   
 
         
 }

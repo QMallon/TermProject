@@ -25,6 +25,7 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 WebRequest request = WebRequest.Create("https://localhost:44345/api/profile"); //webrequest for the api localhost

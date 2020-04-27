@@ -79,6 +79,7 @@
     <Content Include="SearchPage.aspx" />
     <Content Include="DateRequest.aspx" />
     <Content Include="Like_Pass.aspx" />
+    <Content Include="Messages.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Profile.cs" />
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="Like_Pass.aspx.designer.cs">
       <DependentUpon>Like_Pass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Messages.aspx.cs">
+      <DependentUpon>Messages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Messages.aspx.designer.cs">
+      <DependentUpon>Messages.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
