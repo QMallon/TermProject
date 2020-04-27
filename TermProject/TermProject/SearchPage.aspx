@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TermProject.Master" AutoEventWireup="true" CodeBehind="SearchPage.aspx.cs" Inherits="TermProject.WebForm5" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 </asp:Content>
@@ -25,7 +24,7 @@
           <li ><asp:HyperLink runat="server" NavigateUrl="Default.aspx" Text="Messages"></asp:HyperLink></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="<%= Page.ResolveUrl("Login.aspx") %>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
@@ -255,7 +254,8 @@
     <br>
 
     <div class="row">
-    <asp:Repeater ID="rpProfiles" runat="server">
+
+        <asp:Repeater ID="rpProfiles" runat="server">
 
                <ItemTemplate>
                
@@ -297,8 +297,7 @@
            
                     </ItemTemplate>
     </asp:Repeater>
-        
-        </div>
+    </div>
             <br>
         </form>
 

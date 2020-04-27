@@ -18,7 +18,9 @@ namespace TermProject
     public partial class WebForm4 : System.Web.UI.Page
     {
         DBConnect objDB = new DBConnect();
+
         Profile currentProfile;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //string Username = Session["Username"].ToString();
@@ -29,8 +31,10 @@ namespace TermProject
                 objCommand = new SqlCommand();
                 int ID = Convert.ToInt32(Session["CurrentUserID"]);
 
+
                 objCommand.CommandType = CommandType.StoredProcedure;
                 objCommand.CommandText = "TP_GetProfileByUserID";
+
 
                 objCommand.Parameters.AddWithValue("@UserId", ID);
                 DataSet ProfileID = objDB.GetDataSetUsingCmdObj(objCommand);

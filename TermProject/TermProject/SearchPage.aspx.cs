@@ -9,6 +9,7 @@ using System.Web.Script.Serialization; //Json serialization
 using System.IO; // Stream reader and Stream
 using System.Net; // Web Request 
 using System.Data.SqlClient;
+using System.Drawing;
 using Utilities;
 
 namespace TermProject
@@ -20,9 +21,8 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             WebRequest request = WebRequest.Create("https://localhost:44345/api/profile"); //webrequest for the api localhost
-        
+
             WebResponse response = request.GetResponse();
 
             Stream theDataStream = response.GetResponseStream();
@@ -38,7 +38,9 @@ namespace TermProject
 
             rpProfiles.DataSource = profile;
             rpProfiles.DataBind();
-         
+
+
+
         }
 
         protected void btnFind_Click(object sender, EventArgs e)
@@ -50,94 +52,141 @@ namespace TermProject
 
         protected void btnSrcName_Click(object sender, EventArgs e)
         {
-            WebRequest request = WebRequest.Create("https://localhost:44337/api/Search/GetProfilesByName/" + txtSrcName.Text); //webrequest for the api localhost
+            if (txtSrcName.Text != "")
+            {
 
-            WebResponse response = request.GetResponse();
+                WebRequest request = WebRequest.Create("https://localhost:44337/api/Search/GetProfilesByName/" + txtSrcName.Text); //webrequest for the api localhost
 
-            Stream theDataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(theDataStream);
+                WebResponse response = request.GetResponse();
 
-            String data = reader.ReadToEnd();
+                Stream theDataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(theDataStream);
 
-            reader.Close();
-            response.Close();
+                String data = reader.ReadToEnd();
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Profile[] profile = js.Deserialize<Profile[]>(data);
+                reader.Close();
+                response.Close();
 
-            rpProfiles.DataSource = profile;
-            rpProfiles.DataBind();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Profile[] profile = js.Deserialize<Profile[]>(data);
 
+                rpProfiles.DataSource = profile;
+                rpProfiles.DataBind();
+            }
+            else {
+
+                lblSearchName.ForeColor = Color.Red;
+                lblSearchName.Text = "Please type the name of the person:";
+
+            }
         }
 
         protected void btnSrcByAge_Click(object sender, EventArgs e)
         {
+            if (txtMinAge.Text != null || txtMaxAge.Text == null)
+            {
 
-            WebRequest request = WebRequest.Create("https://localhost:44337/api/Search/GetProfilesByAge/" + txtMinAge.Text + "/" + txtMaxAge.Text); //webrequest for the api localhost
+                WebRequest request = WebRequest.Create("https://localhost:44337/api/Search/GetProfilesByAge/" + txtMinAge.Text + "/" + txtMaxAge.Text); //webrequest for the api localhost
 
-            WebResponse response = request.GetResponse();
+                WebResponse response = request.GetResponse();
 
-            Stream theDataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(theDataStream);
+                Stream theDataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(theDataStream);
 
-            String data = reader.ReadToEnd();
+                String data = reader.ReadToEnd();
 
-            reader.Close();
-            response.Close();
+                reader.Close();
+                response.Close();
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Profile[] profile = js.Deserialize<Profile[]>(data);
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Profile[] profile = js.Deserialize<Profile[]>(data);
 
-            rpProfiles.DataSource = profile;
-            rpProfiles.DataBind();
+                rpProfiles.DataSource = profile;
+                rpProfiles.DataBind();
+            }
+            else {
+
+                lblMaxAge.ForeColor = Color.Red;
+                lblMinAge.ForeColor = Color.Red;
+                lblSearhByAge.ForeColor = Color.Red;
+                lblSearhByAge.Text = "Please type the right age range.";
+
+            }
 
         }
         
         protected void btnFindByLocation_Click(object sender, EventArgs e)
         {
-            WebRequest request = WebRequest.Create("https://localhost:44337/api/Search/GetProfilesByLocation/" + txtSrcCity.Text + "/" + ddlSearchState.SelectedValue); //webrequest for the api localhost
 
+            if (txtSrcCity.Text != "" || ddlSearchState.SelectedValue != "")
+            {
 
+                WebRequest request = WebRequest.Create("https://localhost:44337/api/Search/GetProfilesByLocation/" + txtSrcCity.Text + "/" + ddlSearchState.SelectedValue); //webrequest for the api localhost
 
-            WebResponse response = request.GetResponse();
+                WebResponse response = request.GetResponse();
 
-            Stream theDataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(theDataStream);
+                Stream theDataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(theDataStream);
 
-            String data = reader.ReadToEnd();
+                String data = reader.ReadToEnd();
 
-            reader.Close();
-            response.Close();
+                reader.Close();
+                response.Close();
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Profile[] profile = js.Deserialize<Profile[]>(data);
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Profile[] profile = js.Deserialize<Profile[]>(data);
 
-            rpProfiles.DataSource = profile;
-            rpProfiles.DataBind();
+                rpProfiles.DataSource = profile;
+                rpProfiles.DataBind();
+
+            }
+            else
+            {
+
+                lblSearchByCity.ForeColor = Color.Red;
+                lblSearchByState.ForeColor = Color.Red;
+                lblSearchByCity.Text = "You need to select a valid state and type a valid city.";
+                
+            }
+
         }
 
         protected void btnSrcOptions_Click(object sender, EventArgs e)
 
         {
 
-            WebRequest request = WebRequest.Create("https://localhost:44337/api/Search/GetProfilesByOptions/" +
-              rbCommintment.SelectedValue + "/" + rbKids.SelectedValue + "/" + rbWantKids.SelectedValue + "/"); //webrequest for the api localhost
+            if (rbCommintment.SelectedValue == null || rbKids.SelectedValue == null || rbWantKids.Text == null)
+            {
 
-            WebResponse response = request.GetResponse();
+                WebRequest request = WebRequest.Create("https://localhost:44337/api/Search/GetProfilesByOptions/" +
+                rbCommintment.SelectedValue + "/" + rbKids.SelectedValue + "/" + rbWantKids.SelectedValue + "/"); //webrequest for the api localhost
 
-            Stream theDataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(theDataStream);
+                WebResponse response = request.GetResponse();
 
-            String data = reader.ReadToEnd();
+                Stream theDataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(theDataStream);
 
-            reader.Close();
-            response.Close();
+                String data = reader.ReadToEnd();
 
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            Profile[] profile = js.Deserialize<Profile[]>(data);
+                reader.Close();
+                response.Close();
 
-            rpProfiles.DataSource = profile;
-            rpProfiles.DataBind();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Profile[] profile = js.Deserialize<Profile[]>(data);
+
+                rpProfiles.DataSource = profile;
+                rpProfiles.DataBind();
+            }
+            else {
+
+                lblSearchWantKids.ForeColor = Color.Red;
+                lblSearchByKids.ForeColor = Color.Red;
+                lblSearchByCommitment.ForeColor = Color.Red;
+
+                lblSearchByCommitment.Text = "Please check all the requirements. Commitment:";
+
+
+            }
 
 
         }
