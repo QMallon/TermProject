@@ -30,6 +30,16 @@
                     <asp:BoundField DataField="Location" HeaderText="Location" />
                     <asp:BoundField DataField="Date" HeaderText="Date" />
                     <asp:BoundField DataField="Description" HeaderText="Description" />
+                    <asp:TemplateField HeaderText="Approve">
+                        <ItemTemplate>
+                            <asp:Button ID="btnApprove" CssClass="btn-success" runat="server" OnClick="btnApprove_Click" Text="Approve" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Pass">
+                        <ItemTemplate>
+                            <asp:Button ID="btnPass" CssClass="btn-danger" runat="server" OnClick="btnPass_Click" Text="Pass" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                  </asp:GridView>
             </div>
