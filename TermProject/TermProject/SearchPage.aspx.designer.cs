@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TermProject {
-    
-    
-    public partial class WebForm5 {
-        
+namespace TermProject
+{
+
+
+    public partial class WebForm5
+    {
+
         /// <summary>
         /// divSrcName control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSrcName;
-        
+
         /// <summary>
         /// lblSearchName control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchName;
-        
+
         /// <summary>
         /// txtSrcName control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSrcName;
-        
+
         /// <summary>
         /// btnSrcName control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSrcName;
-        
+
         /// <summary>
         /// divSearchFilter control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSearchFilter;
-        
+
         /// <summary>
         /// divSrcLocation control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSrcLocation;
-        
+
         /// <summary>
         /// lblSearchByCity control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchByCity;
-        
+
         /// <summary>
         /// txtSrcCity control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSrcCity;
-        
+
         /// <summary>
         /// lblSearchByState control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchByState;
-        
+
         /// <summary>
         /// ddlSearchState control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSearchState;
-        
+
         /// <summary>
         /// btnFindByLocation control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFindByLocation;
-        
+
         /// <summary>
         /// divSrcByAge control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSrcByAge;
-        
+
         /// <summary>
         /// lblSearhByAge control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearhByAge;
-        
+
         /// <summary>
         /// lblMinAge control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMinAge;
-        
+
         /// <summary>
         /// txtMinAge control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMinAge;
-        
+
         /// <summary>
         /// lblMaxAge control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMaxAge;
-        
+
         /// <summary>
         /// txtMaxAge control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMaxAge;
-        
+
         /// <summary>
         /// btnSrcByAge control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSrcByAge;
-        
+
         /// <summary>
         /// divSearchByOptions control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSearchByOptions;
-        
+
         /// <summary>
         /// lblSearchByCommitment control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchByCommitment;
-        
+
         /// <summary>
         /// rbCommintment control.
         /// </summary>
@@ -200,7 +202,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rbCommintment;
-        
+
         /// <summary>
         /// lblSearchByKids control.
         /// </summary>
@@ -209,7 +211,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchByKids;
-        
+
         /// <summary>
         /// rbKids control.
         /// </summary>
@@ -218,7 +220,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rbKids;
-        
+
         /// <summary>
         /// lblSearchWantKids control.
         /// </summary>
@@ -227,7 +229,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchWantKids;
-        
+
         /// <summary>
         /// rbWantKids control.
         /// </summary>
@@ -236,7 +238,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rbWantKids;
-        
+
         /// <summary>
         /// btnSrcOptions control.
         /// </summary>
@@ -245,7 +247,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSrcOptions;
-        
+
         /// <summary>
         /// divSrcByReligion control.
         /// </summary>
@@ -254,7 +256,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSrcByReligion;
-        
+
         /// <summary>
         /// lblSearchByReligion control.
         /// </summary>
@@ -263,7 +265,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSearchByReligion;
-        
+
         /// <summary>
         /// ddlReligion control.
         /// </summary>
@@ -272,7 +274,7 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlReligion;
-        
+
         /// <summary>
         /// btnFindByReligion control.
         /// </summary>
@@ -281,7 +283,16 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFindByReligion;
-        
+
+        /// <summary>
+        /// lblTest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTest;
+
         /// <summary>
         /// rpProfiles control.
         /// </summary>
