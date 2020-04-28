@@ -18,15 +18,6 @@ namespace TermProject
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            objCommand.CommandType = CommandType.StoredProcedure;
-
-            objCommand.CommandText = "TP_sp_GetListOfMessages";
-
-            DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
-
-            rpMessages.DataSource = myDS;
-
-            rpMessages.DataBind();
 
         }
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TermProject.Master" AutoEventWireup="true" CodeBehind="SearchPage.aspx.cs" Inherits="TermProject.WebForm5" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TermProject.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TermProject.WebForm5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 

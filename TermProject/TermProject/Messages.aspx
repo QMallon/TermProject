@@ -1,36 +1,48 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TermProject.Master" AutoEventWireup="true" CodeBehind="Messages.aspx.cs" Inherits="TermProject.WebForm7" %>
+
+<%@ Register Src="~/MessagesControl.ascx" TagPrefix="uc1" TagName="MessagesControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form runat="server">
+   
     
-              <asp:Repeater ID="rpMessages" runat="server">
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+    </div>
 
-               <ItemTemplate>
-               
-                    <div class="col-lg-3 col-md-3 col-sm-3">
-                            <br>
-                            <div class="card " style="text-align:center;background-color:lightgray;border-radius: 5px;height:300px;width:280px">
-                                
-                                <br>
-                                
-                                <asp:Label ID="lblSender" class="" runat="server" style="text-align:center;font-weight:bold; font-size:20px" Text='<%#Eval("SenderID")%>'></asp:Label>
-                               
-                                <asp:Label ID="lblMessage" runat="server" Text='<%#Eval("Message")%>'></asp:Label>
-                                
-                               <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status")%>'></asp:Label> </p>
-                            
-                                <asp:Button class="btn btn-success" ID="btnRptLike" runat="server" Text="Like" />
-                                
-                                <asp:Button class="btn btn-danger" ID="btnRptDislike" runat="server" Text="Not Like" />
-                        
-                        </div>
-
-                    </div>
-           
-                    </ItemTemplate>
-    </asp:Repeater>
+    <div class="col-sm-8 text-left"> 
+	<form runat="server">
+         <div id="divMessageControl">
     
+        <uc1:MessagesControl runat="server" id="MessagesControl" />
+    
+         </div>
 
-    </form>
+	</form>
+    </div>
+
+    <div class="col-sm-2 sidenav">
+    </div>
+  </div>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
 </asp:Content>

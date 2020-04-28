@@ -76,10 +76,11 @@
     <Content Include="Registration.aspx" />
     <Content Include="CreateProfile.aspx" />
     <Content Include="ProfileView.aspx" />
-    <Content Include="SearchPage.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="DateRequest.aspx" />
     <Content Include="Like_Pass.aspx" />
     <Content Include="Messages.aspx" />
+    <Content Include="MessagesControl.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Profile.cs" />
@@ -119,12 +120,12 @@
     <Compile Include="ProfileView.aspx.designer.cs">
       <DependentUpon>ProfileView.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SearchPage.aspx.cs">
-      <DependentUpon>SearchPage.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SearchPage.aspx.designer.cs">
-      <DependentUpon>SearchPage.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="DateRequest.aspx.cs">
       <DependentUpon>DateRequest.aspx</DependentUpon>
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="Messages.aspx.designer.cs">
       <DependentUpon>Messages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessagesControl.ascx.cs">
+      <DependentUpon>MessagesControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessagesControl.ascx.designer.cs">
+      <DependentUpon>MessagesControl.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
