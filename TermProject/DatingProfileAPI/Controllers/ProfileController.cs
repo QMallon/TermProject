@@ -69,6 +69,7 @@ namespace DatingProfileAPI.Controllers
                 profile.Kids = record["Kids"].ToString();
                 profile.WantKids = record["WantKids"].ToString();
                 profile.Religion = record["Religion"].ToString();
+                profile.UserImage = record["UserImage"].ToString();
 
                 profiles.Add(profile);
 

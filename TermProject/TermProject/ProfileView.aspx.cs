@@ -113,6 +113,8 @@ namespace TermProject
 
             imgProfilePicture.ImageUrl = currentProfile.UserImage;
 
+
+
             lblName.Text = Name;
             lblFavorites.Text = Favorites;
             lblInterests.Text = interests;
@@ -140,7 +142,7 @@ namespace TermProject
             string PI = "";
             if (x.Age != 0 )
             {
-                PI += "Age: " + x.Age;
+                PI += "\nAge: " + x.Age;
             }
             if (x.Weight != 0)
             {
@@ -170,7 +172,7 @@ namespace TermProject
             
             if (x.Religion != "" && x.Religion != null)
             {
-                PV +=  "Religion: " + x.Religion;
+                PV +=  "\nReligion: " + x.Religion;
             }
             if (x.Commitment != "" && x.Commitment != null)
             {

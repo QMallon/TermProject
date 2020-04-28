@@ -28,13 +28,14 @@
     <div class="container">
 
        
-        <div class ="row ">
+        <div class ="row glyphicon-align-center">
+            <asp:Image CssClass="img-thumbnail glyphicon-align-center" imageAlign="Middle" ID="imgProfilePicture" ImageUrl="\Img\Profiles\Default.png" runat="server" />
             <h1>
                <asp:Label ID="lblName" runat="server" Text=""></asp:Label>
 
             </h1>
             
-            <asp:Image CssClass="img-thumbnail glyphicon-align-center" ID="imgProfilePicture" runat="server" />
+            
         </div>
         <div class ="row">
             <h2>Personal Info</h2>

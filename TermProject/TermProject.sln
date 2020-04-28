@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1062
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermProject", "TermProject\TermProject.csproj", "{8AAC8981-8E4A-46E1-AC8E-4DFF3D54B8D1}"
 EndProject
@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatingProfileAPI", "DatingP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{45ED9E72-5A11-45B7-89F1-F0C984FF83CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchProfileAPI", "SearchProfileAPI\SearchProfileAPI.csproj", "{29B75D40-7355-4680-85FD-9FA2B2EED8CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchProfileAPI", "SearchProfileAPI\SearchProfileAPI.csproj", "{29B75D40-7355-4680-85FD-9FA2B2EED8CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C2BDBF6A-121E-48B7-8E26-B8F7817D9B8E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
