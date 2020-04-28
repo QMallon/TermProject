@@ -30,8 +30,8 @@
 	    <div class="container" id="divProfile" runat="server">
 
        
-        <div class ="row glyphicon-align-center">
-            <asp:Image CssClass="img-thumbnail glyphicon-align-center" imageAlign="Middle" ID="imgProfilePicture" ImageUrl="\Img\Profiles\Default.png" runat="server" />
+        <div class ="row text-center">
+            <asp:Image CssClass="rounded mx-auto d-block" height="200" width="200"  imageAlign="Middle" ID="imgProfilePicture" ImageUrl="\Img\Profiles\Default.png" runat="server" />
             <h1>
                <asp:Label ID="lblName" runat="server" Text=""></asp:Label>
 
