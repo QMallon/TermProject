@@ -182,8 +182,8 @@ namespace TermProject
 
 
             profile.UserID = int.Parse(strUserID);
-            if (String.IsNullOrWhiteSpace(txtFirstName.Text)
-                || String.IsNullOrWhiteSpace(txtLastName.Text))
+            if (!String.IsNullOrWhiteSpace(txtFirstName.Text)
+                || !String.IsNullOrWhiteSpace(txtLastName.Text))
             {
                 profile.FirstName = txtFirstName.Text;
                 profile.LastName = txtLastName.Text;
@@ -199,9 +199,9 @@ namespace TermProject
             }
 
             //----------- address ------------//
-            if (String.IsNullOrEmpty(txtStreetAddress.Text)
-              || String.IsNullOrEmpty(txtStreetAddressLn2.Text)
-               || String.IsNullOrEmpty(txtCity.Text))
+            if (!String.IsNullOrEmpty(txtStreetAddress.Text)
+              || !String.IsNullOrEmpty(txtStreetAddressLn2.Text)
+               || !String.IsNullOrEmpty(txtCity.Text))
             {
 
                 profile.StreetAddress = txtStreetAddress.Text;
@@ -218,7 +218,7 @@ namespace TermProject
                 lblStatus.Text = "Please check the values entered.";
 
             }
-                if(String.IsNullOrWhiteSpace(txtZipcode.Text) 
+                if(!String.IsNullOrWhiteSpace(txtZipcode.Text) 
                 || txtZipcode.Text.Length != 5
                  || txtZipcode.Text.All(char.IsDigit) == false) {
 

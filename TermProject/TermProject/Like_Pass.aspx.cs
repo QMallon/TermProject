@@ -22,20 +22,25 @@ namespace TermProject
         List<Profile> Passes = new List<Profile>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (!IsPostBack)
             {
-                Likes = getLikedProfiles();
-                Passes = getPassedProfiles();
 
-                gvLikes.DataSource = Likes;
-                gvLikes.DataBind();
 
-                gvDislikes.DataSource = Passes;
-                gvDislikes.DataBind();
-            }
-            catch
-            {
-                //NoUserID / error
+                try
+                {
+                    Likes = getLikedProfiles();
+                    Passes = getPassedProfiles();
+
+                    gvLikes.DataSource = Likes;
+                    gvLikes.DataBind();
+
+                    gvDislikes.DataSource = Passes;
+                    gvDislikes.DataBind();
+                }
+                catch
+                {
+                    //NoUserID / error
+                }
             }
 
 
