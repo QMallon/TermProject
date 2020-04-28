@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TermProject.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TermProject.WebForm5" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TermProject.Master" AutoEventWireup="true" CodeBehind="SearchPage.aspx.cs" Inherits="TermProject.WebForm5" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -30,9 +30,7 @@
   Search Profiles
 </button>
    
-
             <!-- Button trigger modal -->
-
 
 <!-- Modal -->
 <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
@@ -226,7 +224,7 @@
 
 <!-----------/Modal-------------->
     <br>
-            <asp:Label ID="lblTest" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblTest" runat="server" Text=""></asp:Label>
     <hr>
     <br>
 

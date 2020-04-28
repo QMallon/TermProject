@@ -19,13 +19,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form runat="server">
-        <div id="divProfile" runat="server">
-    
-        <div class="container">
 
-    
-    <div class="container">
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+    </div>
+
+    <div class="col-sm-8 text-left"> 
+	<form runat="server">
+	    <div class="container" id="divProfile" runat="server">
 
        
         <div class ="row glyphicon-align-center">
@@ -76,15 +78,14 @@
     </div>
         <div class="row">
             <asp:Label ID="lblFavorites" runat="server" Text=""></asp:Label>
-        </div>
+            </div>
+
         <div class ="row">
-           <asp:Button class="btn-primary" ID="btnLike" runat="server" Text="Like" OnClick="btnLike_Click" /><asp:Button class="btn-danger" ID="btnPass" runat="server" Text="Pass" OnClick="btnPass_Click" />
-            <asp:Button class="btn-danger" ID="btnBlock" runat="server" Text="Block" OnClick="btnBlock_click" />
-        </div>
-        <div class="row">
+        <asp:Button class="btn-primary" ID="btnLike" runat="server" Text="Like" OnClick="btnLike_Click" /><asp:Button class="btn-danger" ID="btnPass" runat="server" Text="Pass" OnClick="btnPass_Click" />
+        <asp:Button class="btn-danger" ID="btnBlock" runat="server" Text="Block" OnClick="btnBlock_click" />
         <asp:Button class="btn-primary" ID="btnMessage" runat="server" Text="Message" />
         <asp:Button class="btn-primary" ID="btnDateRequest" runat="server" Text="Request Date" OnClick="btnDateRequest_Click1"  />
-        </div>
+        
         
     <asp:Panel ID="pnlDateRequest" runat="server" style="margin-top: 1px" Visible="False">
         <h2>Date Request</h2>
@@ -98,11 +99,15 @@
         <asp:Button ID="btnDateSubmit" CssClass="btn-success" runat="server" Text="Submit" OnClick="btnDateSubmit_Click" />
         
     </asp:Panel>
-</div>
-            </div>
-    </form>
         </div>
-
+            </div>
+   
+            </form>
     </div>
- 
+
+    <div class="col-sm-2 sidenav">
+    </div>
+  </div>
+</div>
+
 </asp:Content>

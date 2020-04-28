@@ -15,7 +15,7 @@
 
     <div class="col-sm-8 text-left"> 
 	<form runat="server">
-         <div id="divMessageControl">
+         <div id="divMessageControl" runat="server">
     
         <uc1:MessagesControl runat="server" id="MessagesControl" />
     

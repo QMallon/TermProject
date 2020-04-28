@@ -25,6 +25,8 @@ namespace TermProject
 
             protected void Page_Load(object sender, EventArgs e)
             {
+            try
+            {
                 userID = Session["UserID"].ToString();
                 username = Session["Username"].ToString();
 
@@ -43,9 +45,17 @@ namespace TermProject
                 ddlMatches.DataTextField = "SenderID";
                 ddlMatches.DataSource = ds;
                 ddlMatches.DataBind();
+            }
+            catch {
+
+
+               
+                Response.Write("<h2>Please login before try to opening your profile</h2>");
 
 
             }
+
+        }
 
 
             public void Bind()

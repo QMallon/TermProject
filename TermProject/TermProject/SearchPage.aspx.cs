@@ -45,6 +45,9 @@ namespace TermProject
 
                 rpProfiles.DataSource = profile;
                 rpProfiles.DataBind();
+
+                
+
             }
             
 
@@ -54,9 +57,33 @@ namespace TermProject
 
         protected void btnFind_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-         
-            
+                string userid = Session["UserID"].ToString();
+                if (userid == "")
+                {
+
+                    btnSrcOptions.Visible = false;
+                    btnSrcByAge.Visible = false;
+                    btnFindByLocation.Visible = false;
+                    btnFindByReligion.Visible = false;
+                    lblTest.Text = "For have more search options login.";
+                }
+            }
+            catch {
+
+                btnSrcOptions.Visible = false;
+                btnSrcByAge.Visible = false;
+                btnFindByLocation.Visible = false;
+                btnFindByReligion.Visible = false;
+                lblTest.Text = "For have more search options login.";
+
+
+            }
+
+
+
         }
 
         protected void btnSrcName_Click(object sender, EventArgs e)

@@ -76,7 +76,7 @@
     <Content Include="Registration.aspx" />
     <Content Include="CreateProfile.aspx" />
     <Content Include="ProfileView.aspx" />
-    <Content Include="Default.aspx" />
+    <Content Include="SearchPage.aspx" />
     <Content Include="DateRequest.aspx" />
     <Content Include="Like_Pass.aspx" />
     <Content Include="Messages.aspx" />
@@ -120,12 +120,12 @@
     <Compile Include="ProfileView.aspx.designer.cs">
       <DependentUpon>ProfileView.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="SearchPage.aspx.cs">
+      <DependentUpon>SearchPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="SearchPage.aspx.designer.cs">
+      <DependentUpon>SearchPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="DateRequest.aspx.cs">
       <DependentUpon>DateRequest.aspx</DependentUpon>

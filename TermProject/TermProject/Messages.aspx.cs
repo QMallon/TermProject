@@ -17,7 +17,24 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                string UserID = Session["UserID"].ToString();
 
+                if (UserID == "")
+                {
+                    divMessageControl.Visible = false;
+                    Response.Write("<h2>Please login before try to opening your profile</h2>");
+
+                }
+            }
+            catch {
+
+                divMessageControl.Visible = false;
+                Response.Write("<h2>Please login before try to opening your profile</h2>");
+
+
+            }
 
         }
 
