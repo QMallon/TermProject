@@ -183,6 +183,7 @@ namespace DatingProfileAPI.Controllers
             objCommand.Parameters.AddWithValue("@Kids", profile.Kids);
             objCommand.Parameters.AddWithValue("@WantKids", profile.WantKids);
             objCommand.Parameters.AddWithValue("@Religion", profile.Religion);
+            //objCommand.Parameters.AddWithValue("@UserImage", profile.UserImage);
          
 
             int result = objDB.DoUpdateUsingCmdObj(objCommand);
