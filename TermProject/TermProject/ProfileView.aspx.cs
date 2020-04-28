@@ -127,14 +127,30 @@ namespace TermProject
         
         protected void btnLike_Click(object sender, EventArgs e)
         {
-            Function.updateLikes(Convert.ToInt32(Session["UserID"].ToString()), currentProfile.ProfileID);
+            try
+            {
+                Function.updateLikes(Convert.ToInt32(Session["UserID"].ToString()), currentProfile.ProfileID);
+            }
+            catch
+            {
+                //error
+            }
+            
 
 
         }
 
         protected void btnPass_Click(object sender, EventArgs e)
         {
-            Function.updatePass(Convert.ToInt32(Session["UserID"].ToString()), currentProfile.ProfileID);
+            try
+            {
+                Function.updatePass(Convert.ToInt32(Session["UserID"].ToString()), currentProfile.ProfileID);
+            }
+            catch
+            {
+                //error
+            }
+            
         }
 
         private string getProfilePI(Profile x)
