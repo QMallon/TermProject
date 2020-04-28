@@ -69,6 +69,7 @@ namespace DatingProfileAPI.Controllers
                 profile.Kids = record["Kids"].ToString();
                 profile.WantKids = record["WantKids"].ToString();
                 profile.Religion = record["Religion"].ToString();
+                profile.UserImage = record["UserImage"].ToString();
 
                 profiles.Add(profile);
 
@@ -182,6 +183,7 @@ namespace DatingProfileAPI.Controllers
             objCommand.Parameters.AddWithValue("@Kids", profile.Kids);
             objCommand.Parameters.AddWithValue("@WantKids", profile.WantKids);
             objCommand.Parameters.AddWithValue("@Religion", profile.Religion);
+            //objCommand.Parameters.AddWithValue("@UserImage", profile.UserImage);
          
 
             int result = objDB.DoUpdateUsingCmdObj(objCommand);

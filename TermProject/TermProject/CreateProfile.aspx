@@ -60,11 +60,11 @@
 
 <br>
 
-<asp:FileUpload ID="FileUpload1" runat="server" style="display: block;margin-left: auto;margin-right: auto;" class="btn btn-primary"/>
+<asp:FileUpload ID="FileUpload1" runat="server" style="display: block;margin-left: auto;margin-right: auto;" class="btn btn-primary" UseSubmitBehavior="false"/>
 
 <br>
 
-<asp:Button ID="btnUpload" Text="SaveImage" runat="server" OnClick="UploadFile" style="display: block;margin-left: auto;margin-right: auto;" class="btn btn-success" />
+<asp:Button ID="btnUpload" Text="SaveImage" runat="server" OnClick="UploadFile" style="display: block;margin-left: auto;margin-right: auto;" class="btn btn-success" UseSubmitBehavior="false" />
             
             <hr>
 
