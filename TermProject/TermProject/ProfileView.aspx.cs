@@ -282,7 +282,7 @@ namespace TermProject
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.CommandText = "TP_GetBlocks";
 
-            objCommand.Parameters.AddWithValue("@UserId", Session["CurrentUserID"].ToString());
+            objCommand.Parameters.AddWithValue("@UserId", Session["UserID"].ToString());
 
             objDB.GetDataSetUsingCmdObj(objCommand);
 
@@ -290,7 +290,7 @@ namespace TermProject
 
             Byte[] byteArray = (Byte[])objDB.GetField("BlockList", 0);
 
-
+           
 
             BinaryFormatter deSerializer = new BinaryFormatter();
 
@@ -298,7 +298,15 @@ namespace TermProject
 
 
 
-            List<int> BlockList = (List<int>)deSerializer.Deserialize(memStream);
+            List<int> BlockList;
+            try
+            {
+                BlockList = (List<int>)deSerializer.Deserialize(memStream);
+            }
+            catch
+            {
+                BlockList = new List<int>();
+            }
 
             BlockList.Add(Convert.ToInt32(Session["CurrentUserID"]));
 
