@@ -182,8 +182,9 @@ namespace TermProject
 
 
             profile.UserID = int.Parse(strUserID);
-            if (String.IsNullOrWhiteSpace(txtFirstName.Text)
-                || String.IsNullOrWhiteSpace(txtLastName.Text))
+            strUserImage = getImageURL();
+            if (!String.IsNullOrWhiteSpace(txtFirstName.Text)
+                || !String.IsNullOrWhiteSpace(txtLastName.Text))
             {
                 profile.FirstName = txtFirstName.Text;
                 profile.LastName = txtLastName.Text;
@@ -199,9 +200,9 @@ namespace TermProject
             }
 
             //----------- address ------------//
-            if (String.IsNullOrEmpty(txtStreetAddress.Text)
-              || String.IsNullOrEmpty(txtStreetAddressLn2.Text)
-               || String.IsNullOrEmpty(txtCity.Text))
+            if (!String.IsNullOrEmpty(txtStreetAddress.Text)
+              || !String.IsNullOrEmpty(txtStreetAddressLn2.Text)
+               || !String.IsNullOrEmpty(txtCity.Text))
             {
 
                 profile.StreetAddress = txtStreetAddress.Text;
@@ -218,7 +219,7 @@ namespace TermProject
                 lblStatus.Text = "Please check the values entered.";
 
             }
-                if(String.IsNullOrWhiteSpace(txtZipcode.Text) 
+                if(!String.IsNullOrWhiteSpace(txtZipcode.Text) 
                 || txtZipcode.Text.Length != 5
                  || txtZipcode.Text.All(char.IsDigit) == false) {
 
@@ -331,8 +332,55 @@ namespace TermProject
             txtZipcode.Text = "";
             
         }
+        private string getImageURL()
+        {
+            int imgSize = 0;
+            string fileExt, imgName, imgType;
+            string folderPath = Server.MapPath("~/Img/Profiles/");
+            if (FileUpload1.HasFile)
+            {
+
+                imgSize = FileUpload1.PostedFile.ContentLength; //get the size of the image in bytes 
+
+                byte[] imgData = new byte[imgSize];
+
+                FileUpload1.PostedFile.InputStream.Read(imgData, 0, imgSize);
+                imgName = FileUpload1.PostedFile.FileName;
+                imgType = FileUpload1.PostedFile.ContentType;
+
+                fileExt = imgName.Substring(imgName.LastIndexOf("."));
+                fileExt = fileExt.ToLower();
+
+                if (fileExt == ".jpg" || fileExt == ".jpeg" || fileExt == ".bmp" || fileExt == ".gif")
+
+                {
+
+
+                    FileUpload1.SaveAs(folderPath + strUsername + fileExt); // save file to the directory img/profiles
+                    Image1.ImageUrl = "/Img/Profiles/" + strUsername + fileExt;
+                    strUserImage = Image1.ImageUrl;
+                    Image1.BorderColor = Color.Green;
+                    return strUserImage;
+                }
+
+                else
+
+                {
+
+                    lblStatus.ForeColor = Color.Red;
+                    lblStatus.Text = "Wrong File";
+                    return "NOIMG";
+                }
+
+            }
+
+            return "NOIMG";
+
+
+        }
+    }
         
         
     }
      
-}
+

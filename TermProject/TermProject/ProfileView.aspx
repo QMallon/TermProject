@@ -8,6 +8,9 @@
         
         
         }
+        h1{
+            text-align:center;
+        }
             
             
             
@@ -16,21 +19,23 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <form runat="server">
         <div id="divProfile" runat="server">
     
         <div class="container">
 
-    <form runat="server">
+    
     <div class="container">
 
        
-        <div class ="row ">
+        <div class ="row glyphicon-align-center">
+            <asp:Image CssClass="img-thumbnail glyphicon-align-center" imageAlign="Middle" ID="imgProfilePicture" ImageUrl="\Img\Profiles\Default.png" runat="server" />
             <h1>
                <asp:Label ID="lblName" runat="server" Text=""></asp:Label>
 
             </h1>
-            <asp:Image ID="imgProfilePicture" runat="server" />
+            
+            
         </div>
         <div class ="row">
             <h2>Personal Info</h2>
@@ -44,7 +49,7 @@
             
         </div>
         <div class="row" style="white-space:pre-wrap;">
-            <asp:Label ID="lblValues" runat="server" Text=""></asp:Label>
+            <asp:Label  ID="lblValues" runat="server" Text=""></asp:Label>
         </div>
 
         <div class ="row">
@@ -94,6 +99,7 @@
         
     </asp:Panel>
 </div>
+            </div>
     </form>
         </div>
 

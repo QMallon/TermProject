@@ -43,8 +43,14 @@
   <ItemGroup>
     <Compile Include="Connection.cs" />
     <Compile Include="EmailSender.cs" />
+    <Compile Include="LikePassFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

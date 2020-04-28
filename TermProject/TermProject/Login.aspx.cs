@@ -17,6 +17,7 @@ namespace TermProject
         {
             if (!IsPostBack && Request.Cookies["LoginCookie"] != null)
             {
+                Session["UserID"] = "NONUser";
                 HttpCookie cookie = Request.Cookies["LoginCookie"];
 
                 txtUserName.Text = cookie.Values["User"].ToString();

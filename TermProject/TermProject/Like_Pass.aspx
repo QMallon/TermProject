@@ -2,12 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <form runat="server">
     <div class="container">
         <div class="row">
             <div class="column">
                 <h2>Liked</h2>
                 <div class="table-responsive-md">
-                    <asp:GridView ID="gvLikes" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvLikes_SelectedIndexChanged">
+                    <asp:GridView ID="gvLikes" CssClass="table" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvLikes_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField DataField="firstname" HeaderText="First Name" />
                             <asp:BoundField DataField="lastName" HeaderText="Last Name" />
@@ -29,7 +30,7 @@
             <div class="column">
                 <h2>Passed</h2>
                 <div class="table-responsive-md">
-                    <asp:GridView ID="gvDislikes" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvDislikes_SelectedIndexChanged">
+                    <asp:GridView ID="gvDislikes" CssClass="table" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvDislikes_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField DataField="firstName" HeaderText="First Name" />
                             <asp:BoundField DataField="lastName" HeaderText="Last Name" />
@@ -53,5 +54,5 @@
     
     </div>
     
-
+    </form>
 </asp:Content>
