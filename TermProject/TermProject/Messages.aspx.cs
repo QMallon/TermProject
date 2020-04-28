@@ -17,16 +17,24 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                string UserID = Session["UserID"].ToString();
 
-            objCommand.CommandType = CommandType.StoredProcedure;
+                if (UserID == "")
+                {
+                    divMessageControl.Visible = false;
+                    Response.Write("<h2>Please login before try to opening your profile</h2>");
 
-            objCommand.CommandText = "TP_sp_GetListOfMessages";
+                }
+            }
+            catch {
 
-            DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
+                divMessageControl.Visible = false;
+                Response.Write("<h2>Please login before try to opening your profile</h2>");
 
-            rpMessages.DataSource = myDS;
 
-            rpMessages.DataBind();
+            }
 
         }
 
