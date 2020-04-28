@@ -80,6 +80,7 @@
     <Content Include="DateRequest.aspx" />
     <Content Include="Like_Pass.aspx" />
     <Content Include="Messages.aspx" />
+    <Content Include="MessagesControl.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Profile.cs" />
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="Messages.aspx.designer.cs">
       <DependentUpon>Messages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessagesControl.ascx.cs">
+      <DependentUpon>MessagesControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessagesControl.ascx.designer.cs">
+      <DependentUpon>MessagesControl.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
