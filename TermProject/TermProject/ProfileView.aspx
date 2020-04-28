@@ -8,6 +8,9 @@
         
         
         }
+        h1{
+            text-align:center;
+        }
             
             
             
@@ -30,7 +33,8 @@
                <asp:Label ID="lblName" runat="server" Text=""></asp:Label>
 
             </h1>
-            <asp:Image ID="imgProfilePicture" runat="server" />
+            
+            <asp:Image CssClass="img-thumbnail glyphicon-align-center" ID="imgProfilePicture" runat="server" />
         </div>
         <div class ="row">
             <h2>Personal Info</h2>
@@ -44,7 +48,7 @@
             
         </div>
         <div class="row" style="white-space:pre-wrap;">
-            <asp:Label ID="lblValues" runat="server" Text=""></asp:Label>
+            <asp:Label  ID="lblValues" runat="server" Text=""></asp:Label>
         </div>
 
         <div class ="row">

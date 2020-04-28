@@ -15,10 +15,23 @@ namespace TermProject
         DBConnect objDB = new DBConnect();
         protected void Page_Load(object sender, EventArgs e)
         {
-            gvPendingDates.DataSource = getPDates(Convert.ToInt32(Session["UserID"]));
-            gvPendingDates.DataBind();
-            gvPlannedDates.DataSource = getCDates(Convert.ToInt32(Session["UserID"]));
-            gvPlannedDates.DataBind();
+            if (!IsPostBack)
+            {
+                try
+                {
+
+
+                    gvPendingDates.DataSource = getPDates(Convert.ToInt32(Session["UserID"]));
+                    gvPendingDates.DataBind();
+                    gvPlannedDates.DataSource = getCDates(Convert.ToInt32(Session["UserID"]));
+                    gvPlannedDates.DataBind();
+                }
+                catch
+                {
+                    
+                }
+            }
+            
 
         }
 
@@ -51,23 +64,38 @@ namespace TermProject
 
         protected void btnApprove_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+            string name = row.Cells[1].Text;
+            //int rowIndex = e.Item.ItemIndex;
             SqlCommand objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
             //Login
             objCommand.CommandText = "TP_ConfirmDate";
             objCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
             objCommand.Parameters.AddWithValue("@PassConfirm", 1);
+            objCommand.Parameters.AddWithValue("@UserName", name);
             objDB.DoUpdateUsingCmdObj(objCommand);
         }
         protected void btnPass_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+            string name = row.Cells[1].Text; 
+
             SqlCommand objCommand = new SqlCommand();
             objCommand.CommandType = CommandType.StoredProcedure;
             //Login
             objCommand.CommandText = "TP_ConfirmDate";
             objCommand.Parameters.AddWithValue("@UserId", Convert.ToInt32(Session["UserId"].ToString()));
             objCommand.Parameters.AddWithValue("@PassConfirm", 2);
+            objCommand.Parameters.AddWithValue("@UserName", name);
             objDB.DoUpdateUsingCmdObj(objCommand);
+        }
+
+        protected void gvPendingDates_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
